@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex h-[100dvh] w-screen items-center justify-center overflow-hidden [background-image:var(--gradient-3)]">
+    <main className="flex h-[100dvh] w-screen items-center justify-center overflow-hidden [background-image:var(--gradient-3)] before:grainy before:opacity-30">
       <header className="flex w-full flex-col items-center overflow-hidden py-10 text-center before:crt before:animate-crt">
         <div aria-hidden className="scan-line animate-scan-line" />
-        <h1 className="ml-[-1.25cqw] animate-text-glitch font-cal text-7xl font-bold tracking-tighter sm:text-[22cqw] mix-blend-hard-light">
+        <h1 className="ml-[-1.25cqw] animate-text-glitch font-cal text-7xl font-bold tracking-tighter mix-blend-hard-light sm:text-[22cqw]">
           <span className="ease-spring-3 inline-block duration-500 animate-in fade-in-0 slide-in-from-bottom-2">
             Hive Codes
           </span>
