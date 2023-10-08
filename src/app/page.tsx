@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex h-[100dvh] w-screen items-center justify-center overflow-hidden [background-image:var(--gradient-3)] before:grainy">
+    <main className="flex h-[100dvh] w-screen items-center justify-center overflow-hidden [background-image:var(--gradient-3)]">
       <header className="flex w-full flex-col items-center overflow-hidden py-10 text-center before:crt before:animate-crt">
         <div aria-hidden className="scan-line animate-scan-line" />
         <h1 className="ml-[-1.25cqw] animate-text-glitch font-cal text-7xl font-bold tracking-tighter sm:text-[22cqw] mix-blend-hard-light">
@@ -17,7 +17,7 @@ export default function Home() {
           </span>{" "}
           with their brand sponsors
         </p>
-        <section className="mt-6 origin-top duration-500 animate-in fade-in-0 zoom-in-50">
+        <section className="mt-[3cqw] origin-top duration-500 animate-in fade-in-0 zoom-in-50">
           <Link
             href="/search"
             className="group dotted-graph rounded-lg border border-border px-4 py-2 font-bold tracking-wider transition-all ease-elastic-out-3 [box-shadow:var(--shadow-3)] visited:text-[var(--text-1)]"

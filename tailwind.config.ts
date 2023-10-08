@@ -178,7 +178,6 @@ const config: Config = {
         ".crt": {
           background:
             "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))",
-          // backgroundSize: "100% 2px, 3px 100%",
           backgroundSize: "100% 2px, 3px 100%",
 
           // background: 'linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
@@ -187,7 +186,6 @@ const config: Config = {
           position: "absolute",
           inset: "0",
           // opacity: "0.5",
-          // "z-index": "0",
           pointerEvents: "none",
           // mixBlendMode: "color-dodge",
         },
@@ -202,7 +200,7 @@ const config: Config = {
           height: "100px",
           // "z-index": "2",
           pointerEvents: "none",
-          // mixBlendMode: "overlay",
+          // mixBlendMode: "color-dodge",
         },
       });
     }),
