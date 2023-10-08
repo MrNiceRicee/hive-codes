@@ -12,15 +12,15 @@ export default function Home() {
         </h1>
         <p className="ease-spring-3 -mt-[6cqw] text-[3.5cqw] font-light tracking-wide duration-500 animate-in fade-in-0 slide-in-from-top-3">
           Support your favorite{" "}
-          <span className="animate-text-glitch font-cal tracking-wider">
+          <span className="animate-text-glitch font-cal tracking-wider underline underline-offset-4">
             creators
           </span>{" "}
           with their brand sponsors
         </p>
-        <section className="animate-in zoom-in-50 duration-500 fade-in-0 mt-4 origin-top">
+        <section className="mt-4 origin-top duration-500 animate-in fade-in-0 zoom-in-50">
           <Link
             href="/search"
-            className="rounded-lg border border-border px-4 py-2 text-[1.5cqw] font-bold tracking-wider transition-all ease-elastic-out-3 [box-shadow:var(--shadow-3)]"
+            className="group rounded-lg border border-border px-4 py-2 text-[1.5cqw] font-bold tracking-wider transition-all ease-elastic-out-3 [box-shadow:var(--shadow-3)] visited:text-[var(--text-1)]"
           >
             Get Started
           </Link>
