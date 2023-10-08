@@ -4,3 +4,36 @@
 @import "open-props/style";
 @import "open-props/normalize";
 @import "open-props/buttons";
+
+:root {
+  color-scheme: light;
+
+  --background: var(--surface-1);
+  --background-contrast: var(--text-1);
+
+  --border: var(--stone-9);
+
+  --text-primary: var(--text-1);
+  --text-primary-contrast: var(--surface-2);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --background: var(--surface-1);
+    --background-contrast: var(--text-1);
+
+    --border: var(--stone-1);
+
+    --text-primary: var(--text-1);
+    --text-primary-contrast: var(--surface-2);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background
+  }
+}
