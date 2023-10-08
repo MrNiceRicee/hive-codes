@@ -5,25 +5,32 @@
   "scripts": {
     "clean": "rm -rf .next node_modules",
     "dev": "next dev",
+    "db:push": "dotenv drizzle-kit push:pg",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.6.0",
+    "@t3-oss/env-nextjs": "^0.7.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "drizzle-orm": "^0.28.6",
     "next": "13.5.4",
     "open-props": "^1.6.5",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "^0.19.13",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
