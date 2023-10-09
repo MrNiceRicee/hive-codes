@@ -4,6 +4,7 @@
 import { z } from "zod";
 import { db } from "~/db";
 import { creator } from "~/db/schema";
+import { revalidatePath } from 'next/cache'
 
 // interface CreateCreatorProps {
 //   name: string;
@@ -28,15 +29,27 @@ const createCreatorSchema = z.object({
 //   });
 // }
 
-export async function create(prevData: any, formData: FormData) {
-  const parse = createCreatorSchema.parse({
-    name: formData.get("name"),
-  });
-  // if (!parse.success) {
-  //   return {
-  //     error: parse.error.flatten().fieldErrors.name?.join(", "),
-  //   };
-  // }
+export async function create(_state: any, payload: FormData) {
+  // const parse = createCreatorSchema.parse({
+  //   name: payload.get("name"),
+  // });
 
-  return db.insert(creator).values(parse).returning();
+  const parse = createCreatorSchema.safeParse({
+    name: payload.get("name"),
+  });
+  if (!parse.success) {
+    return {
+      error:
+        parse.error.flatten().fieldErrors.name?.join(", ") || "Unknown error",
+      data: null,
+    };
+  }
+
+  const res = await db.insert(creator).values(parse.data).returning();
+
+  revalidatePath("/creators");
+  return {
+    error: null,
+    data: res,
+  };
 }

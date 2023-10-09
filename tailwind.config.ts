@@ -154,6 +154,12 @@ const config: Config = {
     require("tailwindcss-animate"),
     plugin(function ({ addComponents }) {
       addComponents({
+        ".text-gradient": {
+          background: "var(--text-gradient)",
+          backgroundClip: "text",
+          "-webkit-background-clip": "text",
+          "-webkit-text-fill-color": "transparent",
+        },
         ".grainy": {
           position: "absolute",
           backgroundImage: "var(--noise-5)",
