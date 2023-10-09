@@ -14,6 +14,12 @@ dependencies:
   '@tanstack/react-query':
     specifier: 5.0.0-rc.4
     version: 5.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query-devtools':
+    specifier: ^5.0.0-rc.4
+    version: 5.0.0-rc.4(@tanstack/react-query@5.0.0-rc.4)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query-next-experimental':
+    specifier: ^5.0.0-rc.4
+    version: 5.0.0-rc.4(@tanstack/react-query@5.0.0-rc.4)(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -22,13 +28,16 @@ dependencies:
     version: 2.0.0
   drizzle-orm:
     specifier: ^0.28.6
-    version: 0.28.6(@neondatabase/serverless@0.6.0)
+    version: 0.28.6(@neondatabase/serverless@0.6.0)(postgres@3.3.5)
   next:
     specifier: 13.5.4
     version: 13.5.4(react-dom@18.2.0)(react@18.2.0)
   open-props:
     specifier: ^1.6.5
     version: 1.6.5
+  postgres:
+    specifier: ^3.3.5
+    version: 3.3.5
   react:
     specifier: ^18
     version: 18.2.0
@@ -556,6 +565,37 @@ packages:
 
   /@tanstack/query-core@5.0.0-rc.4:
     resolution: {integrity: sha512-d5QHSpR+kmutkJfXmyaiNvchVQctuY3d3vWBbAS4M3JTEQuOt+Gg2v7oghnDG05Ks7M0pq7ofNFuAJZ3s7p1yg==}
+    dev: false
+
+  /@tanstack/query-devtools@5.0.0-rc.1:
+    resolution: {integrity: sha512-33ECTglWAllVT6IfUhqvgKbJulOtOP8+z9W/i0FlmWKNaEwzaR8lpa4pOCyLCZA2p5XW97nSJ/JfPOzeYQN/jQ==}
+    dev: false
+
+  /@tanstack/react-query-devtools@5.0.0-rc.4(@tanstack/react-query@5.0.0-rc.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ILdxaONmNW7hWC6S9oL99NhrBbK/Iv8juA7O3JhtdwF/DxDnnt/KihhzalRNtVLC8P/E2k5fDfwV4r/ofJ2QGQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.0.0-rc.4
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.0.0-rc.1
+      '@tanstack/react-query': 5.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/react-query-next-experimental@5.0.0-rc.4(@tanstack/react-query@5.0.0-rc.4)(next@13.5.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-KyoNyOXjEfIAt0fJr3zyc4eUqCUSx3pY1nCyWhHZQjSn7XkLaCl1JonwODWsHEsoKNq3S8y5iQZjCuehAVUxcQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.0.0-rc.4
+      next: ^13.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@tanstack/react-query': 5.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
+      next: 13.5.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@5.0.0-rc.4(react-dom@18.2.0)(react@18.2.0):
@@ -1159,7 +1199,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.6(@neondatabase/serverless@0.6.0):
+  /drizzle-orm@0.28.6(@neondatabase/serverless@0.6.0)(postgres@3.3.5):
     resolution: {integrity: sha512-yBe+F9htrlYER7uXgDJUQsTHFoIrI5yMm5A0bg0GiZ/kY5jNXTWoEy4KQtg35cE27sw1VbgzoMWHAgCckUUUww==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -1222,6 +1262,7 @@ packages:
         optional: true
     dependencies:
       '@neondatabase/serverless': 0.6.0
+      postgres: 3.3.5
     dev: false
 
   /electron-to-chromium@1.4.544:
@@ -2677,6 +2718,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       xtend: 4.0.2
+    dev: false
+
+  /postgres@3.3.5:
+    resolution: {integrity: sha512-+JD93VELV9gHkqpV5gdL5/70HdGtEw4/XE1S4BC8f1mcPmdib3K5XsKVbnR1XcAyC41zOnifJ+9YRKxdIsXiUw==}
     dev: false
 
   /prelude-ls@1.2.1:

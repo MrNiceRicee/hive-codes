@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "~/lib/utils";
-import QueryProvider from "~/providers/query";
+// import { QueryProvider } from "~/providers/query";
 
 const calFont = localFont({
   src: "../fonts/CalSans-SemiBold.woff2",
@@ -26,7 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(calFont.variable, inter.className)}>
-        <QueryProvider>{children}</QueryProvider>
+        {/* <QueryProvider>{children}</QueryProvider> */}
+        {children}
       </body>
     </html>
   );
