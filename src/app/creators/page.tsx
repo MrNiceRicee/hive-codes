@@ -17,10 +17,10 @@ export default async function Creator({
   };
 }) {
   return (
-    <main className="flex h-[100dvh] w-screen justify-center overflow-hidden py-8 before:grainy before:opacity-40">
+    <main className="mt-10 flex h-[100dvh] w-screen justify-center overflow-hidden py-8 before:grainy before:opacity-40">
       <div className="container flex flex-col space-y-4">
         <AddForm />
-        <section className="dotted-graph space-y-2 h-full">
+        <section className="dotted-graph h-full space-y-2">
           <h2 className="text-gradient mx-auto text-center font-cal text-6xl drop-shadow [--text-gradient:var(--background-gradient-1)]">
             creators
           </h2>

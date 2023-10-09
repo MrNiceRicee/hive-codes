@@ -13,7 +13,7 @@ async function CreatorFetch(id: string) {
       name: true,
       createdAt: true,
       updatedAt: true,
-    }
+    },
   });
 
   return creator;

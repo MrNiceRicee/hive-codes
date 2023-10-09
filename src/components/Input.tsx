@@ -6,7 +6,7 @@ export function Input(props: InputProps) {
     <input
       {...props}
       className={cn(
-        "rounded-lg border bg-[--surface-1] px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)]",
+        "rounded-lg border border-gray-200 bg-[--surface-1] px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)] dark:border-gray-800",
         props.className,
       )}
     />

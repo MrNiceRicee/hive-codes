@@ -25,11 +25,11 @@ export function Navbar() {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50">
       <div className="container mx-auto flex justify-between py-4">
-        <div className="font-cal text-lg flex items-center space-x-4">
+        <div className="flex items-center space-x-4 font-cal text-lg">
           <NavLink href="/">Hive Codes</NavLink>
           {/* <NavBack /> */}
         </div>
-        <div className="flex space-x-4 items-center">
+        <div className="flex items-center space-x-4">
           <NavLink href="/search">Search</NavLink>
           <NavLink href="/creators">Creators</NavLink>
         </div>

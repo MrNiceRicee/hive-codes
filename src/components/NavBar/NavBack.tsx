@@ -9,7 +9,7 @@ export function NavBack() {
   if (isHome) return null;
 
   return (
-    <button onClick={() => router.back()} className="font-light font-sans">
+    <button onClick={() => router.back()} className="font-sans font-light">
       <svg
         className="h-6 w-6"
         viewBox="0 0 24 24"

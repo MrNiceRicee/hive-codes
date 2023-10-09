@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Navbar } from "~/components/NavBar/Navbar";
 import { cn } from "~/lib/utils";
+import { ThemeProvider } from "~/providers/theme";
 
 const calFont = localFont({
   src: "../fonts/CalSans-SemiBold.woff2",
@@ -27,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(calFont.variable, inter.className)}>
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

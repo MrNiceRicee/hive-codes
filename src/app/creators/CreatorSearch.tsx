@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { Search } from "lucide-react";
 import { Input } from "~/components/Input";
 
 export function CreatorSearch() {
@@ -25,12 +26,17 @@ export function CreatorSearch() {
 
   return (
     <form onSubmit={onSubmit}>
-      <fieldset className="mb-4 flex flex-col group focus-within:outline-dashed focus-within:outline-4 outline-[var(--brand)] focus-within:outline-offset-4 transition-all duration-300 [box-shadow:var(--inner-shadow-3)]">
-        <label htmlFor="search" className="sr-only">
-          Search
+      <fieldset className="group mb-4 flex items-center space-x-2 rounded-lg border border-gray-200 px-2 outline-[var(--brand)] backdrop-blur transition-all duration-300 [box-shadow:var(--inner-shadow-3)] focus-within:outline-dashed focus-within:outline-4 focus-within:outline-offset-4 dark:border-gray-900">
+        <label htmlFor="search">
+          <span className="sr-only">Search</span>
+          <Search className="text-[var(--gray-6)]" />
         </label>
-        <Input name="search" id="search" placeholder="search..." className="focus:outline-none border-none shadow-[0 0 0 0]" />
-
+        <Input
+          name="search"
+          id="search"
+          placeholder="search..."
+          className="w-full border-none bg-transparent [box-shadow:0_0_transparent] focus:outline-none"
+        />
       </fieldset>
     </form>
   );
