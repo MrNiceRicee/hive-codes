@@ -6,6 +6,7 @@ import {
 } from "react-dom";
 
 import { create } from "./create";
+import { Input } from "~/components/Input";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -43,16 +44,11 @@ export function AddForm() {
   >(create, initialState);
 
   return (
-    <section className="mx-auto max-w-sm rounded-[calc(0.5rem+0.5rem)] border p-2 backdrop-blur">
+    <section className="mx-auto max-w-sm rounded-[calc(0.5rem+0.25rem)] border p-1 backdrop-blur">
       <form action={formAction}>
         <fieldset className="flex flex-col space-y-1">
           <label htmlFor="name">name</label>
-          <input
-            name="name"
-            id="name"
-            placeholder="someone"
-            className="rounded-lg bg-[--surface-1] px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)]"
-          />
+          <Input name="name" id="name" placeholder="someone" />
         </fieldset>
         <SubmitButton />
         <ErrorMessage error={state.error} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { Input } from "~/components/Input";
 
 export function CreatorSearch() {
   const router = useRouter();
@@ -24,16 +25,12 @@ export function CreatorSearch() {
 
   return (
     <form onSubmit={onSubmit}>
-      <fieldset className="mb-4 flex flex-col space-y-1">
+      <fieldset className="mb-4 flex flex-col group focus-within:outline-dashed focus-within:outline-4 outline-[var(--brand)] focus-within:outline-offset-4 transition-all duration-300 [box-shadow:var(--inner-shadow-3)]">
         <label htmlFor="search" className="sr-only">
           Search
         </label>
-        <input
-          name="search"
-          id="search"
-          placeholder="search..."
-          className="rounded-lg bg-[--surface-1] px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)]"
-        />
+        <Input name="search" id="search" placeholder="search..." className="focus:outline-none border-none shadow-[0 0 0 0]" />
+
       </fieldset>
     </form>
   );
