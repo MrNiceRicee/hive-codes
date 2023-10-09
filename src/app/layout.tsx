@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "~/lib/utils";
+import QueryProvider from "~/providers/query";
 
 const calFont = localFont({
   src: "../fonts/CalSans-SemiBold.woff2",
@@ -13,7 +14,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hive Codes",
-  description: "Support your favorite creators with their brand sponsors. Easily find and use their discount codes.",
+  description:
+    "Support your favorite creators with their brand sponsors. Easily find and use their discount codes.",
 };
 
 export default function RootLayout({
@@ -23,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(calFont.variable, inter.className)}>{children}</body>
+      <body className={cn(calFont.variable, inter.className)}>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }

@@ -9,6 +9,7 @@
   color-scheme: light;
 
   --brand: var(--indigo-6);
+  --link: var(--indigo-6);
 
   --background: var(--surface-1);
   --background-contrast: var(--text-1);
@@ -25,11 +26,12 @@
     color-scheme: dark;
 
     --brand: var(--indigo-6);
+    --link: var(--indigo-6);
 
     --background: var(--surface-1);
     --background-contrast: var(--text-1);
 
-    --background-gradient-1: var(--gradient-3);
+    /* --background-gradient-1: var(--gradient-3); */
     /* --border: var(--stone-1); */
 
     --text-primary: var(--text-1);
@@ -43,8 +45,12 @@
   }
 }
 
-@media (prefers-contrast: more) {
+@media (--highContrast) {
   :root {
     --background-gradient-1: var(--surface-1);
   }
 }
+
+/* :focus-visible { 
+  outline-color: var(--brand);
+} */
