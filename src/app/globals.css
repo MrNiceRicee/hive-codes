@@ -8,24 +8,29 @@
 :root {
   color-scheme: light;
 
+  --brand: var(--indigo-6);
+
   --background: var(--surface-1);
   --background-contrast: var(--text-1);
 
-  --border: var(--stone-9);
+  --background-gradient-1: var(--gradient-3);
+  /* --border: var(--stone-9); */
 
   --text-primary: var(--text-1);
   --text-primary-contrast: var(--surface-2);
-
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
+    --brand: var(--indigo-6);
+
     --background: var(--surface-1);
     --background-contrast: var(--text-1);
 
-    --border: var(--stone-1);
+    --background-gradient-1: var(--gradient-3);
+    /* --border: var(--stone-1); */
 
     --text-primary: var(--text-1);
     --text-primary-contrast: var(--surface-2);
@@ -35,5 +40,11 @@
 @layer base {
   body {
     @apply bg-background
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --background-gradient-1: var(--surface-1);
   }
 }

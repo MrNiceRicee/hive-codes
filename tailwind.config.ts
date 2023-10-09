@@ -17,16 +17,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'background': 'var(--background)',
-        'background-contrast': 'var(--background-contrast)',
-        'border': 'var(--border)',
-        'text-primary': 'var(--text-primary)',
-        'text-primary-contrast': 'var(--text-primary-contrast)',
+        background: "var(--background)",
+        "background-contrast": "var(--background-contrast)",
+        border: "var(--border)",
+        "text-primary": "var(--text-primary)",
+        "text-primary-contrast": "var(--text-primary-contrast)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-1": "var(--background-gradient-1)",
       },
       fontFamily: {
         cal: ["var(--font-cal)", ...defaultTheme.fontFamily.sans],
@@ -126,7 +127,7 @@ const config: Config = {
             bottom: "calc(0% - 100px)",
           },
         },
-        "crt": {
+        crt: {
           "0%": {
             backgroundPosition: "0 0%",
           },
@@ -145,7 +146,7 @@ const config: Config = {
       animation: {
         "text-glitch": "text-glitch 4s infinite",
         "scan-line": "scan-line 5s linear infinite",
-        "crt": "crt 15s linear infinite",
+        crt: "crt 15s linear infinite",
       },
     },
   },
