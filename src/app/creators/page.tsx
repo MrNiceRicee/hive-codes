@@ -1,7 +1,12 @@
 import { Suspense } from "react";
 import { AddForm } from "./AddForm";
 import { CreatorList } from "./CreatorList";
-import { CreatorSearch } from "./CreatorSearch";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Creators",
+  description: "List of creators that are currently on the platform",
+};
 
 export default async function Creator({
   searchParams,
@@ -11,8 +16,8 @@ export default async function Creator({
   };
 }) {
   return (
-    <main className="dotted-graph py-8 flex h-[100dvh] w-screen justify-center overflow-hidden bg-fixed before:grainy before:opacity-40">
-      <div className="flex flex-col space-y-4">
+    <main className="flex h-[100dvh] w-screen justify-center overflow-hidden bg-[--surface-2] bg-fixed py-8 before:grainy before:opacity-40">
+      <div className="container flex flex-col space-y-4">
         <AddForm />
         <Suspense>
           <CreatorList search={searchParams.search} />

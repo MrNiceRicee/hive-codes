@@ -1,14 +1,9 @@
 "use server";
 
-// import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { db } from "~/db";
 import { creator } from "~/db/schema";
-import { revalidatePath } from 'next/cache'
-
-// interface CreateCreatorProps {
-//   name: string;
-// }
+import { revalidatePath } from "next/cache";
 
 const createCreatorSchema = z.object({
   name: z
@@ -21,19 +16,7 @@ const createCreatorSchema = z.object({
     }),
 });
 
-// export function useCreateCreator() {
-//   return useMutation({
-//     mutationFn: async (data: CreateCreatorProps) => {
-//       return db.insert(creator).values(data).returning();
-//     },
-//   });
-// }
-
 export async function create(_state: any, payload: FormData) {
-  // const parse = createCreatorSchema.parse({
-  //   name: payload.get("name"),
-  // });
-
   const parse = createCreatorSchema.safeParse({
     name: payload.get("name"),
   });

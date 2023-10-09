@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "~/lib/utils";
-// import { QueryProvider } from "~/providers/query";
 
 const calFont = localFont({
   src: "../fonts/CalSans-SemiBold.woff2",
   variable: "--font-cal",
+  preload: true,
 });
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], preload: true });
 
 export const metadata: Metadata = {
   title: "Hive Codes",
@@ -25,10 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(calFont.variable, inter.className)}>
-        {/* <QueryProvider>{children}</QueryProvider> */}
-        {children}
-      </body>
+      <body className={cn(calFont.variable, inter.className)}>{children}</body>
     </html>
   );
 }

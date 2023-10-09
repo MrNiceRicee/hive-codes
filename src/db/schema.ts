@@ -6,10 +6,10 @@ import {
   timestamp,
   integer,
   uniqueIndex,
-  pgTableCreator
+  pgTableCreator,
 } from "drizzle-orm/pg-core";
 
-const pgTable = pgTableCreator((name) => `hive_codes_${name}`)
+const pgTable = pgTableCreator((name) => `hive_codes_${name}`);
 
 /*
   Company

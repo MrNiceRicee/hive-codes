@@ -24,13 +24,15 @@ export function CreatorSearch() {
 
   return (
     <form onSubmit={onSubmit}>
-      <fieldset className="flex flex-col space-y-1 mb-4">
-        <label htmlFor="search" className="sr-only">Search</label>
+      <fieldset className="mb-4 flex flex-col space-y-1">
+        <label htmlFor="search" className="sr-only">
+          Search
+        </label>
         <input
           name="search"
           id="search"
           placeholder="search..."
-          className="px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)]"
+          className="rounded-lg bg-[--surface-1] px-2 text-lg leading-loose [box-shadow:var(--inner-shadow-3)]"
         />
       </fieldset>
     </form>
