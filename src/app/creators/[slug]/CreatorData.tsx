@@ -2,7 +2,6 @@ import { db } from "~/db";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
-    // where: (creator, {eq}) => eq(creator.id, id),
     where(creator, { eq }) {
       // @ts-ignore -- this works, but drizzle doesn't like it
       return eq(creator.id, id);
@@ -10,6 +9,11 @@ async function CreatorFetch(id: string) {
     with: {
       codes: true,
     },
+    columns: {
+      name: true,
+      createdAt: true,
+      updatedAt: true,
+    }
   });
 
   return creator;

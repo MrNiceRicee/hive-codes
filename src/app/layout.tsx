@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { Navbar } from "~/components/NavBar/Navbar";
 import { cn } from "~/lib/utils";
 
 const calFont = localFont({
@@ -25,7 +26,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(calFont.variable, inter.className)}>{children}</body>
+      <body className={cn(calFont.variable, inter.className)}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

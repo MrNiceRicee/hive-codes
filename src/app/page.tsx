@@ -20,7 +20,7 @@ export default function Home() {
         <section className="mt-[3cqw] origin-top duration-500 animate-in fade-in-0 zoom-in-50">
           <Link
             href="/search"
-            className="group dotted-graph rounded-lg border border-border px-4 py-2 font-bold tracking-wider transition-all ease-elastic-out-3 [box-shadow:var(--shadow-3)] visited:text-[var(--text-1)] focus:outline-dashed focus:outline-4"
+            className="rounded-lg border border-border px-4 py-2 font-bold tracking-wider transition-all ease-elastic-out-3 [box-shadow:var(--shadow-3)] visited:text-[var(--text-1)] focus:outline-dashed focus:outline-4"
           >
             Get Started
           </Link>
