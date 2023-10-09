@@ -4,6 +4,7 @@ import { z } from "zod";
 import { db } from "~/db";
 import { creator } from "~/db/schema";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 const createCreatorSchema = z.object({
   name: z
@@ -27,12 +28,25 @@ export async function create(_state: any, payload: FormData) {
       data: null,
     };
   }
+  try {
+    const res = await db.insert(creator).values(parse.data).returning();
 
-  const res = await db.insert(creator).values(parse.data).returning();
-
-  revalidatePath("/creators");
-  return {
-    error: null,
-    data: res,
-  };
+    revalidatePath("/creators");
+    return {
+      error: null,
+      data: res,
+    };
+  } catch (e) {
+    const error = e as Error;
+    if (error.message.includes("duplicate key")) {
+      return {
+        error: `Creator (${parse.data.name}) already exists. Please choose a different name.`,
+        data: null,
+      };
+    }
+    return {
+      error: error.message,
+      data: null,
+    };
+  }
 }

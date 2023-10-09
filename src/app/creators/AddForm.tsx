@@ -1,7 +1,9 @@
 "use client";
 
-import { experimental_useFormState as useFormState } from "react-dom";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import {
+  experimental_useFormState as useFormState,
+  experimental_useFormStatus as useFormStatus,
+} from "react-dom";
 
 import { create } from "./create";
 
@@ -21,8 +23,8 @@ function SubmitButton() {
 }
 
 const initialState = {
-  data: null,
-  error: null,
+  data: "",
+  error: "",
 };
 
 function ErrorMessage({ error }: { error: string | null }) {
