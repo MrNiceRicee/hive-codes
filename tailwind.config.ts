@@ -145,7 +145,7 @@ const config: Config = {
       },
       animation: {
         "text-glitch": "text-glitch 4s infinite",
-        "scan-line": "scan-line 5s linear infinite",
+        "scan-line": "scan-line 4s var(--ease-elastic-out-4) infinite",
         crt: "crt 15s linear infinite",
       },
     },
