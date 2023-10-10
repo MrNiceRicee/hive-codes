@@ -20,7 +20,7 @@ const pgTable = pgTableCreator((name) => `hive_codes_${name}`);
 */
 export const company = pgTable("companies", {
   id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }),
+  name: varchar("name", { length: 256 }).unique(),
 
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
