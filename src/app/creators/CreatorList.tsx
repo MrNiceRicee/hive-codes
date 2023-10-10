@@ -32,10 +32,19 @@ export async function CreatorList({ search }: { search: string }) {
 
 export function CreatorListLoading() {
   return (
-    <ul className="space-y-6">
-      {Array.from({ length: 10 }).map((_, i) => (
+    <ul className="space-y-6 animate-pulse">
+      {Array.from({ length: 4 }).map((_, i) => (
         <li key={i}>
-          <div className="inline-block h-[4rem] w-full animate-pulse rounded-lg border backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100" />
+          <div
+            className="animate-bloom-fade-in flex h-[4rem] w-full items-center justify-center rounded-lg border opacity-0 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100 duration-200 fill-mode-forwards"
+            style={{
+              animationDelay: `${i * 0.1}s`,
+            }}
+          >
+            <h1 className="text-gradient font-cal [--text-gradient:var(--gradient-5)]">
+              Loading...
+            </h1>
+          </div>
         </li>
       ))}
     </ul>

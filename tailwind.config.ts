@@ -147,6 +147,7 @@ const config: Config = {
         "text-glitch": "text-glitch 4s infinite",
         "scan-line": "scan-line 4s var(--ease-elastic-out-4) infinite",
         crt: "crt 15s linear infinite",
+        "bloom-fade-in": "var(--animation-fade-in-bloom)",
       },
     },
   },

@@ -4,6 +4,8 @@
 @import "open-props/style";
 @import "open-props/normalize";
 @import "open-props/buttons";
+@import "open-props/animations";
+@import "open-props/easings";
 
 :root {
   color-scheme: light;
