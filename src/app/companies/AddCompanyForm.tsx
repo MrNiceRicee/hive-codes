@@ -4,12 +4,22 @@ import {
   experimental_useFormState as useFormState,
   experimental_useFormStatus as useFormStatus,
 } from "react-dom";
+import { Loader } from "lucide-react";
 
 import { createCompany } from "./createCompany";
 import { Input } from "~/components/Input";
 
+function LoadingIndicator() {
+  return (
+    <div className="flex items-center justify-center space-x-2 animate-pulse">
+      <Loader className="h-5 w-5 animate-spin" />
+      <span className="inline-block">adding...</span>
+    </div>
+  );
+}
+
 function SubmitButton() {
-  const { pending } = useFormStatus();
+  let { pending } = useFormStatus();
 
   return (
     <button
@@ -18,7 +28,7 @@ function SubmitButton() {
       disabled={pending}
       className="mt-4 w-full rounded-lg border py-2 font-cal backdrop-blur backdrop-brightness-125"
     >
-      {pending ? "adding..." : "add"}
+      {!pending ? <LoadingIndicator /> : "add"}
     </button>
   );
 }
