@@ -17,7 +17,7 @@ export default async function Creator({
   };
 }) {
   return (
-    <main className="mt-10 flex h-[100dvh] w-screen justify-center overflow-hidden py-8 before:grainy before:opacity-40">
+    <main className="pt-10 flex h-[100dvh] w-screen justify-center overflow-hidden py-8 before:grainy before:opacity-40">
       <div className="container flex flex-col space-y-4">
         <AddForm />
         <section className="dotted-graph h-full space-y-2">

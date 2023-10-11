@@ -2,14 +2,14 @@
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes/dist/types";
-import { useClientOnly } from "~/lib/ClientOnly";
+// import { useClientOnly } from "~/lib/ClientOnly";
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const hasMounted = useClientOnly();
+  // const hasMounted = useClientOnly();
 
-  if (!hasMounted) {
-    return <>{children}</>;
-  }
+  // if (!hasMounted) {
+  //   return <>{children}</>;
+  // }
 
   return (
     <NextThemesProvider

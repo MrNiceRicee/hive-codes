@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { Input } from "~/components/Input";
 
-export function CreatorSearch() {
+export function CompanySearch() {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
@@ -29,7 +29,7 @@ export function CreatorSearch() {
     <form onSubmit={onSubmit}>
       <fieldset className="group mb-4 flex items-center space-x-2 rounded-lg border border-gray-200 px-2 outline-[var(--brand)] backdrop-blur transition-all duration-300 [box-shadow:var(--inner-shadow-3)] focus-within:outline-dashed focus-within:outline-4 focus-within:outline-offset-4 dark:border-gray-900">
         <label htmlFor="search">
-          <span className="sr-only">Search</span>
+          <span className="sr-only">Search Companies</span>
           <Search className="text-[var(--gray-6)]" />
         </label>
         <Input

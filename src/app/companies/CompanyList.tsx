@@ -17,9 +17,9 @@ export async function CompanyList({ name }: { name: string }) {
   return (
     <ul className="space-y-6">
       {res.map((company) => (
-        <li key={company.id}>
+        <li key={company.id} className="bg-transparent">
           <Link
-            className="inline-block w-full rounded-lg border px-2 py-3 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100"
+            className="inline-block bg-transparent w-full rounded-lg border px-2 py-3 backdrop-blur-lg backdrop-brightness-105 backdrop-saturate-100 shadow-md"
             href={`/companies/${company.id}`}
           >
             {company.name}

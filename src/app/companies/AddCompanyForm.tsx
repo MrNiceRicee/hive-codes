@@ -28,7 +28,7 @@ function SubmitButton() {
       disabled={pending}
       className="mt-4 w-full rounded-lg border py-2 font-cal backdrop-blur backdrop-brightness-125"
     >
-      {!pending ? <LoadingIndicator /> : "add"}
+      {pending ? <LoadingIndicator /> : "add"}
     </button>
   );
 }
