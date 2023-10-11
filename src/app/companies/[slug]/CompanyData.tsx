@@ -65,9 +65,7 @@ export async function CreatorData({ id }: { id: string }) {
           })
         ) : (
           <li>
-            <h3 className="font-thin">
-              No codes found for this company
-            </h3>
+            <h3>No codes found for this company</h3>
           </li>
         )}
       </ul>
