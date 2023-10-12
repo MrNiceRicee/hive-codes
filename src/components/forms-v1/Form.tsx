@@ -18,7 +18,7 @@ export function FormLabel({ className, children, ...props }: FormLabelProps) {
   return (
     <label
       className={cn(
-        "font-cal text-sm uppercase tracking-wide text-gray-500",
+        "font-cal text-sm tracking-wide text-gray-500",
         className,
       )}
       {...props}
