@@ -29,24 +29,3 @@ export async function CreatorList({ search }: { search: string }) {
     </ul>
   );
 }
-
-export function CreatorListLoading() {
-  return (
-    <ul className="animate-pulse space-y-6">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <li key={i}>
-          <div
-            className="flex px-2 py-4 w-full animate-bloom-fade-in items-center rounded-lg border opacity-0 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100 duration-200 fill-mode-forwards"
-            style={{
-              animationDelay: `${i * 15},s`,
-            }}
-          >
-            <h1 className="text-gradient font-cal [--text-gradient:var(--gradient-5)]">
-              Loading...
-            </h1>
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
-}

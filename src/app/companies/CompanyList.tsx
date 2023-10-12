@@ -19,32 +19,11 @@ export async function CompanyList({ name }: { name: string }) {
       {res.map((company) => (
         <li key={company.id} className="bg-transparent">
           <Link
-            className="inline-block bg-transparent w-full rounded-lg border px-2 py-3 backdrop-blur-lg backdrop-brightness-105 backdrop-saturate-100 shadow-md"
+            className="inline-block w-full rounded-lg border bg-transparent px-2 py-3 shadow-md backdrop-blur-lg backdrop-brightness-105 backdrop-saturate-100"
             href={`/companies/${company.id}`}
           >
             {company.name}
           </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-export function CompanyListLoading() {
-  return (
-    <ul className="animate-pulse space-y-6">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <li key={i}>
-          <div
-            className="flex px-2 py-4 w-full animate-bloom-fade-in items-center rounded-lg border opacity-0 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100 duration-200 fill-mode-forwards"
-            style={{
-              animationDelay: `${i * 15},s`,
-            }}
-          >
-            <h1 className="text-gradient font-cal [--text-gradient:var(--gradient-5)]">
-              Loading...
-            </h1>
-          </div>
         </li>
       ))}
     </ul>

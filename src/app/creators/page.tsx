@@ -1,8 +1,9 @@
 import { Suspense } from "react";
 import { AddForm } from "./AddForm";
-import { CreatorList, CreatorListLoading } from "./CreatorList";
+import { CreatorList } from "./CreatorList";
 import { Metadata } from "next";
 import { CreatorSearch } from "./CreatorSearch";
+import { LoaderList } from "~/components/loaders/LoaderList";
 
 export const metadata: Metadata = {
   title: "Creators",
@@ -26,7 +27,7 @@ export default async function Creator({
           </h2>
           <div className="mx-auto max-w-sm">
             <CreatorSearch />
-            <Suspense fallback={<CreatorListLoading />}>
+            <Suspense fallback={<LoaderList />}>
               <CreatorList search={searchParams.search} />
             </Suspense>
           </div>

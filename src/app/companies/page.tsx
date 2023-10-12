@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { AddCreatorForm } from "./AddCompanyForm";
-import { CompanyListLoading, CompanyList } from "./CompanyList";
+import { CompanyList } from "./CompanyList";
 import { CompanySearch } from "./CompanySearch";
+import { LoaderList } from "~/components/loaders/LoaderList";
 
 export default function Company({
   searchParams,
@@ -20,7 +21,7 @@ export default function Company({
           </h2>
           <div className="mx-auto max-w-sm">
             <CompanySearch />
-            <Suspense fallback={<CompanyListLoading />}>
+            <Suspense fallback={<LoaderList />} key={searchParams.search}>
               <CompanyList name={searchParams.search} />
             </Suspense>
           </div>
