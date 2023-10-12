@@ -36,7 +36,7 @@ export function CreatorListLoading() {
       {Array.from({ length: 4 }).map((_, i) => (
         <li key={i}>
           <div
-            className="flex h-[4rem] w-full animate-bloom-fade-in items-center justify-center rounded-lg border opacity-0 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100 duration-200 fill-mode-forwards"
+            className="flex px-2 py-4 w-full animate-bloom-fade-in items-center rounded-lg border opacity-0 backdrop-blur-lg backdrop-brightness-125 backdrop-saturate-100 duration-200 fill-mode-forwards"
             style={{
               animationDelay: `${i * 15},s`,
             }}
