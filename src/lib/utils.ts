@@ -5,8 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+type Prettify<T> = {
+  [K in keyof T]: T[K];
+} & {};
+
 type WithoutNullableKeys<Type> = {
-  [Key in keyof Type]-?: WithoutNullableKeys<NonNullable<Type[Key]>>;
+  [Key in keyof Type]: WithoutNullableKeys<NonNullable<Type[Key]>>;
 };
 
 export function stripUndef<T extends object>(obj: T) {

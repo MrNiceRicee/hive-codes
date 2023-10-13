@@ -36,7 +36,6 @@ async function CompanyFetch(id: string) {
     },
   });
 
-  console.log(company);
   return company;
 }
 

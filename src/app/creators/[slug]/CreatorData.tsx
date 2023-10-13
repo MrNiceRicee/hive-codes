@@ -1,5 +1,5 @@
 import { db } from "~/db";
-import { CreateCreatorCode } from "./CreateCreatorCodeForm";
+import { CreateCreatorCode } from "./CreateCreatorCode";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({

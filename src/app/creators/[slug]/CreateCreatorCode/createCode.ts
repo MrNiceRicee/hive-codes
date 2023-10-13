@@ -34,12 +34,11 @@ const createCodeSchema = z.object({
   description: z.string().optional(),
 });
 
-function praseError(error: z.ZodError<(typeof createCodeSchema)["shape"]>) {
-  console.log(error);
+function praseError<T extends z.AnyZodObject>(error: z.ZodError<T["shape"]>) {
   const fields = stripUndef(error.flatten().fieldErrors);
   const keys = Object.keys(fields) as (keyof typeof fields)[];
 
-  return keys.map((key) => fields[key].join(", ")).join(", ");
+  return keys.map((key) => (fields[key] as string[]).join(", ")).join(", ");
 }
 
 export async function createCode(_state: any, payload: FormData) {
