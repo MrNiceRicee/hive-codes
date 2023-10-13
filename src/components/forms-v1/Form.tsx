@@ -18,7 +18,7 @@ export function FormLabel({ className, children, ...props }: FormLabelProps) {
   return (
     <label
       className={cn(
-        "font-cal text-sm tracking-wide text-gray-500",
+        "font-cal text-sm tracking-wide",
         className,
       )}
       {...props}
@@ -37,7 +37,7 @@ export function FormDescription({
   ...props
 }: FormDescriptionProps) {
   return (
-    <p className={cn("text-sm text-gray-500", className)} {...props}>
+    <p className={cn("text-sm text-[var(--text-2)]", className)} {...props}>
       {children}
     </p>
   );
