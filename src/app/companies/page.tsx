@@ -20,10 +20,12 @@ export default function Company({
             companies
           </h2>
           <div className="mx-auto max-w-sm">
-            <CompanySearch />
-            <Suspense fallback={<LoaderList />} key={searchParams.search}>
-              <CompanyList name={searchParams.search} />
-            </Suspense>
+            <search>
+              <CompanySearch />
+              <Suspense fallback={<LoaderList />}>
+                <CompanyList name={searchParams.search} />
+              </Suspense>
+            </search>
           </div>
         </section>
       </div>
