@@ -39,7 +39,7 @@ function SubmitButton() {
   );
 }
 
-export function CreateCreatorCode() {
+export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
   const [state, formAction] = useFormState<
     {
       error: string | null;
@@ -60,23 +60,27 @@ export function CreateCreatorCode() {
             <Input name="code" id="code" placeholder="code..." />
             <FormDescription>the code used for the deal</FormDescription>
           </FormField>
-          <fieldset className="flex flex-col space-y-1">
-            <label htmlFor="companyId">company</label>
+          <FormField>
+            <FormLabel htmlFor="companyId">company</FormLabel>
             <Input name="companyId" id="companyId" placeholder="company..." />
-          </fieldset>
-          <fieldset className="flex flex-col space-y-1">
-            <label htmlFor="creatorId">creator</label>
+            <FormDescription>the company offering the deal</FormDescription>
+          </FormField>
+          {/* <FormField>
+            <FormLabel htmlFor="creatorId">creator</FormLabel>
             <Input name="creatorId" id="creatorId" placeholder="creator..." />
-          </fieldset>
-          <fieldset className="flex flex-col space-y-1">
-            <label htmlFor="description">description</label>
+            <FormDescription>
+              the creator associated with the deal
+            </FormDescription>
+          </FormField> */}
+          <FormField>
+            <FormLabel htmlFor="description">description</FormLabel>
             <Input
               name="description"
               id="description"
               placeholder="description..."
             />
             <FormDescription>a description of the deal or code</FormDescription>
-          </fieldset>
+          </FormField>
           <SubmitButton />
           <ErrorMessage error={state.error} />
         </form>

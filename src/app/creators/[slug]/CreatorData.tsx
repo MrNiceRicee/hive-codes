@@ -48,7 +48,7 @@ export async function CreatorData({ id }: { id: string }) {
       {/* <pre className="rounded-[var(--radius-2)] border px-2 py-3 backdrop-blur backdrop-brightness-110 backdrop-contrast-125">
         {JSON.stringify(data, null, 2)}
       </pre> */}
-      <CreateCreatorCode />
+      <CreateCreatorCode creatorId={id} />
       <ul className="space-y-6">
         {data?.codes.length ? (
           data.codes.map((code) => {
