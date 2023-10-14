@@ -10,6 +10,8 @@ import {
   FormLabel,
 } from "~/components/forms-v1/Form";
 import { CreateForm } from "./CreateForm";
+import { CompanySearchOptions } from "./CompanySearchOptions";
+import { searchCompanies, type SearchCompanies } from "./searchCompanies";
 
 export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
   const [state, formAction] = useFormState<
@@ -19,6 +21,14 @@ export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
     FormData
   >(createCode, { error: null });
 
+  const [dataList, dataListAction] = useFormState<
+    {
+      data: SearchCompanies;
+      error: string | null;
+    },
+    FormData
+  >(searchCompanies, { data: [], error: null });
+
   return (
     <div className="mx-auto w-full max-w-sm space-y-4 rounded-[calc(0.5rem+0.5rem)] border p-2 backdrop-blur">
       <header>
@@ -26,20 +36,8 @@ export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
         <p>add a code to this creator</p>
       </header>
       <section>
-        <form>
-          <FormField>
-            <FormLabel htmlFor="companyId">company</FormLabel>
-            <Input
-              name="companyId"
-              id="companyId"
-              placeholder="company..."
-              list="company-search-list"
-            />
-            <FormDescription>the company offering the deal</FormDescription>
-          </FormField>
-        </form>
         <form action={formAction} className="space-y-2">
-          <CreateForm error={state.error} />
+          <CreateForm error={state.error} creatorId={creatorId} />
         </form>
       </section>
     </div>

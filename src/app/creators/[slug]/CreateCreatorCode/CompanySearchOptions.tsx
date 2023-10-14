@@ -1,4 +1,4 @@
-import type { SearchCompanies } from "./SearchCompanies";
+import type { SearchCompanies } from "./searchCompanies";
 
 export function CompanySearchOptions({
   data,
@@ -8,6 +8,14 @@ export function CompanySearchOptions({
   listName: string;
 }) {
   // const data =  searchCompanies(query);
+
+  if (!data.length) {
+    return (
+      <datalist id={listName} className="w-full">
+        <option value="no results found" disabled>no results found</option>
+      </datalist>
+    );
+  }
 
   return (
     <datalist id={listName} className="w-full">

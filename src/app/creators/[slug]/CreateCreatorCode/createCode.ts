@@ -15,15 +15,12 @@ const createCodeSchema = z.object({
     .min(1, {
       message: "Code must be at least 1 character",
     }),
-  companyId: z
+  companyId: z.coerce
     .number({
       required_error: "Company ID is required",
     })
-    .positive({
-      message: "Company ID must be positive",
-    })
     .int(),
-  creatorId: z
+  creatorId: z.coerce
     .number({
       required_error: "Creator ID is required",
     })
@@ -54,6 +51,7 @@ export async function createCode(_state: any, payload: FormData) {
     };
   }
 
+  console.log("parse.data", parse.data);
   try {
     await db.insert(code).values(parse.data).returning();
 
