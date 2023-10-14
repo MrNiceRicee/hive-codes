@@ -3,15 +3,8 @@
 import { experimental_useFormState as useFormState } from "react-dom";
 
 import { createCode } from "./createCode";
-import { Input } from "~/components/Input";
-import {
-  FormDescription,
-  FormField,
-  FormLabel,
-} from "~/components/forms-v1/Form";
 import { CreateForm } from "./CreateForm";
-import { CompanySearchOptions } from "./CompanySearchOptions";
-import { searchCompanies, type SearchCompanies } from "./searchCompanies";
+import { useRef } from "react";
 
 export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
   const [state, formAction] = useFormState<
@@ -20,14 +13,7 @@ export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
     },
     FormData
   >(createCode, { error: null });
-
-  const [dataList, dataListAction] = useFormState<
-    {
-      data: SearchCompanies;
-      error: string | null;
-    },
-    FormData
-  >(searchCompanies, { data: [], error: null });
+  const ref = useRef<HTMLFormElement>(null);
 
   return (
     <div className="mx-auto w-full max-w-sm space-y-4 rounded-[calc(0.5rem+0.5rem)] border p-2 backdrop-blur">
@@ -36,7 +22,16 @@ export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
         <p>add a code to this creator</p>
       </header>
       <section>
-        <form action={formAction} className="space-y-2">
+        <form
+          ref={ref}
+          action={async (formData) => {
+            await formAction(formData);
+            if (!state.error) {
+              ref.current?.reset();
+            }
+          }}
+          className="space-y-2"
+        >
           <CreateForm error={state.error} creatorId={creatorId} />
         </form>
       </section>

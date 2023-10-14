@@ -51,11 +51,10 @@ export async function createCode(_state: any, payload: FormData) {
     };
   }
 
-  console.log("parse.data", parse.data);
   try {
     await db.insert(code).values(parse.data).returning();
 
-    revalidatePath("/creators/[slug]");
+    revalidatePath("/creators/[slug]", "page");
     return {
       error: null,
     };
