@@ -55,7 +55,10 @@ export async function CreatorData({ id }: { id: string }) {
             return (
               <li key={code.id}>
                 <h3 className="font-cal text-2xl">
-                  {code.company.name} - {code.code}
+                  <pre className="inline border bg-[var(--surface-2)] px-2 py-1 rounded-lg">
+                    {code.code}
+                  </pre>{" - "}
+                  {code.company.name}
                 </h3>
                 <p>{code.description}</p>
               </li>
