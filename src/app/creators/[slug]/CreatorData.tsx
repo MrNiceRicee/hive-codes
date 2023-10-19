@@ -9,7 +9,6 @@ async function CreatorFetch(id: string) {
       return eq(creator.id, id);
     },
     with: {
-      // codes: true,
       codes: {
         columns: {
           id: true,
@@ -27,6 +26,9 @@ async function CreatorFetch(id: string) {
               updatedAt: true,
             },
           },
+        },
+        orderBy(fields, { desc }) {
+          return desc(fields.createdAt);
         },
       },
     },
@@ -50,12 +52,12 @@ export async function CreatorData({
   const data = await CreatorFetch(id);
 
   return (
-    <section className="container flex flex-col items-center justify-center space-y-2">
+    <section className="container mx-auto flex flex-col items-center justify-center space-y-2">
       <h2 className="text-center font-cal text-6xl">{data?.name}</h2>
       <CreateCreatorCode>
         <CreateForm creatorId={id} searchParams={searchParams} />
       </CreateCreatorCode>
-      <ul className="space-y-6">
+      <ul className="mx-auto space-y-6">
         {data?.codes.length ? (
           data.codes.map((code) => {
             return (

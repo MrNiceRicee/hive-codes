@@ -2,7 +2,7 @@ import { CreatorData } from "./CreatorData";
 
 export default function CreatorPage({
   params,
-  searchParams
+  searchParams,
 }: {
   params: {
     slug: string;
@@ -12,7 +12,7 @@ export default function CreatorPage({
   };
 }) {
   return (
-    <main className="flex h-[100dvh] w-screen items-center justify-center overflow-hidden before:grainy before:opacity-40">
+    <main className="pt-20 h-[100dvh] w-screen overflow-hidden overflow-y-scroll before:grainy before:opacity-40">
       <CreatorData id={params.slug} searchParams={searchParams} />
     </main>
   );
