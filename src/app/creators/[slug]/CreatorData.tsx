@@ -40,7 +40,13 @@ async function CreatorFetch(id: string) {
   return creator;
 }
 
-export async function CreatorData({ id }: { id: string }) {
+export async function CreatorData({
+  id,
+  searchParams,
+}: {
+  id: string;
+  searchParams: { company: string };
+}) {
   const data = await CreatorFetch(id);
 
   return (
@@ -50,7 +56,7 @@ export async function CreatorData({ id }: { id: string }) {
         {JSON.stringify(data, null, 2)}
       </pre> */}
       <CreateCreatorCode creatorId={id}>
-        <CreateForm creatorId={id} />
+        <CreateForm creatorId={id} searchParams={searchParams} />
       </CreateCreatorCode>
       <ul className="space-y-6">
         {data?.codes.length ? (

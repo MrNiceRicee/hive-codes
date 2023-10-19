@@ -1,9 +1,11 @@
-"use server";
-
 import z from "zod";
 import { db } from "~/db";
 
-async function search(query: string) {
+async function search(query?: string) {
+  if (!query) {
+    return db.query.company.findMany();
+  }
+
   const res = db.query.company.findMany({
     where(company, { ilike }) {
       return ilike(company.name, `%${query}%`);
@@ -14,16 +16,14 @@ async function search(query: string) {
 }
 
 const searchCompaniesSchema = z.object({
-  query: z.string({
+  company: z.string({
     required_error: "Query is required",
     invalid_type_error: "Query must be a string",
-  }),
+  }).optional(),
 });
 
-export async function searchCompanies(_state: any, payload: FormData) {
-  const parse = searchCompaniesSchema.safeParse({
-    query: payload.get("query"),
-  });
+export async function searchCompanies(payload: { company: string }) {
+  const parse = searchCompaniesSchema.safeParse(payload);
 
   if (!parse.success) {
     return {
@@ -32,7 +32,7 @@ export async function searchCompanies(_state: any, payload: FormData) {
     };
   }
 
-  const data = await search(parse.data.query);
+  const data = await search(parse.data.company);
 
   return {
     error: null,
