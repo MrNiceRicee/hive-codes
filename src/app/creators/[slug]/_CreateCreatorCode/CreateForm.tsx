@@ -1,20 +1,11 @@
-import { ErrorMessage } from "~/components/ErrorMessage";
 import { Input } from "~/components/Input";
 import {
   FormField,
   FormLabel,
   FormDescription,
 } from "~/components/forms-v1/Form";
-import { SubmitButton } from "~/components/forms-v1/SubmitButton";
 
-export function CreateForm({
-  error,
-  creatorId, // companyId,
-}: {
-  error: string | null;
-  // companyId: string;
-  creatorId: string;
-}) {
+export function CreateForm({ creatorId }: { creatorId: string }) {
   return (
     <>
       <FormField>
@@ -46,14 +37,9 @@ export function CreateForm({
           name="creatorId"
           id="creatorId"
           placeholder="creator..."
-          value={creatorId}
-          onChange={() => {
-            console.log("creatorId", creatorId);
-          }}
+          defaultValue={creatorId}
         />
       </FormField>
-      <SubmitButton />
-      <ErrorMessage error={error} />
     </>
   );
 }

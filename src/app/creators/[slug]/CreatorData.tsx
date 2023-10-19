@@ -1,5 +1,6 @@
 import { db } from "~/db";
 import { CreateCreatorCode } from "./_CreateCreatorCode";
+import { CreateForm } from "./_CreateCreatorCode/CreateForm";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
@@ -48,7 +49,9 @@ export async function CreatorData({ id }: { id: string }) {
       {/* <pre className="rounded-[var(--radius-2)] border px-2 py-3 backdrop-blur backdrop-brightness-110 backdrop-contrast-125">
         {JSON.stringify(data, null, 2)}
       </pre> */}
-      <CreateCreatorCode creatorId={id} />
+      <CreateCreatorCode creatorId={id}>
+        <CreateForm creatorId={id} />
+      </CreateCreatorCode>
       <ul className="space-y-6">
         {data?.codes.length ? (
           data.codes.map((code) => {

@@ -5,6 +5,9 @@ import { experimental_useFormState as useFormState } from "react-dom";
 import { createCode } from "./createCode";
 import { CreateForm } from "./CreateForm";
 import { useRef } from "react";
+import error from "next/error";
+import { ErrorMessage } from "~/components/ErrorMessage";
+import { SubmitButton } from "~/components/forms-v1/SubmitButton";
 
 export function CreateCreatorCode({
   creatorId,
@@ -39,7 +42,8 @@ export function CreateCreatorCode({
           className="space-y-2"
         >
           {children}
-          <CreateForm error={state.error} creatorId={creatorId} />
+          <SubmitButton />
+          <ErrorMessage error={state.error} />
         </form>
       </section>
     </div>
