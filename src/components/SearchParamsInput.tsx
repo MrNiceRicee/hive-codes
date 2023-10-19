@@ -1,6 +1,5 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { Input } from "~/components/Input";
 
 export function SearchParamsInput({
@@ -16,18 +15,16 @@ export function SearchParamsInput({
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const [value, setValue] = useState(searchParams.get(param) || "");
+  const defaultValue = searchParams.get(param) || "";
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
+    const newValue = e.target.value;
     const newParams = new URLSearchParams(searchParams);
 
-    if (value) {
-      newParams.set(param, value);
-      setValue(value);
+    if (newValue) {
+      newParams.set(param, newValue);
     } else {
       newParams.delete(param);
-      setValue("");
     }
 
     router.push(`${pathName}?${newParams.toString()}`);
@@ -38,7 +35,8 @@ export function SearchParamsInput({
       name={name}
       id={name}
       placeholder={placeholder}
-      value={value}
+      defaultValue={defaultValue}
+      // value={value}
       onChange={onChange}
     />
   );
