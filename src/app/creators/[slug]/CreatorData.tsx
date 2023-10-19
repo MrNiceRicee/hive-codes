@@ -1,5 +1,5 @@
 import { db } from "~/db";
-import { CreateCreatorCode } from "./CreateCreatorCode";
+import { CreateCreatorCode } from "./_CreateCreatorCode";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
@@ -55,9 +55,10 @@ export async function CreatorData({ id }: { id: string }) {
             return (
               <li key={code.id}>
                 <h3 className="font-cal text-2xl">
-                  <pre className="inline border bg-[var(--surface-2)] px-2 py-1 rounded-lg">
+                  <pre className="inline rounded-lg border bg-[var(--surface-2)] px-2 py-1">
                     {code.code}
-                  </pre>{" - "}
+                  </pre>
+                  {" - "}
                   {code.company.name}
                 </h3>
                 <p>{code.description}</p>

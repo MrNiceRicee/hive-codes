@@ -6,7 +6,13 @@ import { createCode } from "./createCode";
 import { CreateForm } from "./CreateForm";
 import { useRef } from "react";
 
-export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
+export function CreateCreatorCode({
+  creatorId,
+  children,
+}: {
+  creatorId: string;
+  children?: React.ReactNode;
+}) {
   const [state, formAction] = useFormState<
     {
       error: string | null;
@@ -32,6 +38,7 @@ export function CreateCreatorCode({ creatorId }: { creatorId: string }) {
           }}
           className="space-y-2"
         >
+          {children}
           <CreateForm error={state.error} creatorId={creatorId} />
         </form>
       </section>
