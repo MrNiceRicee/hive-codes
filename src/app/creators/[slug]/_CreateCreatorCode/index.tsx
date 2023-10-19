@@ -1,19 +1,15 @@
 "use client";
 
 import { experimental_useFormState as useFormState } from "react-dom";
+import { useRef } from "react";
 
 import { createCode } from "./createCode";
-import { CreateForm } from "./CreateForm";
-import { useRef } from "react";
-import error from "next/error";
 import { ErrorMessage } from "~/components/ErrorMessage";
 import { SubmitButton } from "~/components/forms-v1/SubmitButton";
 
 export function CreateCreatorCode({
-  creatorId,
   children,
 }: {
-  creatorId: string;
   children?: React.ReactNode;
 }) {
   const [state, formAction] = useFormState<

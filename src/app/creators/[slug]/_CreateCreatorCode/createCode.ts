@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from 'next/navigation'
 import { z } from "zod";
 import { db } from "~/db";
 import { code } from "~/db/schema";
@@ -16,10 +17,25 @@ const createCodeSchema = z.object({
       message: "Code must be at least 1 character",
     }),
   companyId: z.coerce
-    .number({
+    .string({
       required_error: "Company ID is required",
     })
-    .int(),
+    .transform(async (companyName, ctx) => {
+      const company = await db.query.company.findFirst({
+        where(table, { eq }) {
+          return eq(table.name, companyName);
+        },
+      });
+      if (!company) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `Company (${companyName}) does not exist`,
+        });
+      }
+
+      return company?.id;
+    })
+    .pipe(z.number()),
   creatorId: z.coerce
     .number({
       required_error: "Creator ID is required",
@@ -31,7 +47,7 @@ const createCodeSchema = z.object({
   description: z.string().optional(),
 });
 
-function praseError<T extends z.AnyZodObject>(error: z.ZodError<T["shape"]>) {
+function parseError<T extends z.AnyZodObject>(error: z.ZodError<T["shape"]>) {
   const fields = stripUndef(error.flatten().fieldErrors);
   const keys = Object.keys(fields) as (keyof typeof fields)[];
 
@@ -39,15 +55,15 @@ function praseError<T extends z.AnyZodObject>(error: z.ZodError<T["shape"]>) {
 }
 
 export async function createCode(_state: any, payload: FormData) {
-  const parse = createCodeSchema.safeParse({
+  const parse = await createCodeSchema.safeParseAsync({
     code: payload.get("code"),
-    companyId: payload.get("companyId"),
+    companyId: payload.get("companyName"),
     creatorId: payload.get("creatorId"),
     description: payload.get("description"),
   });
   if (!parse.success) {
     return {
-      error: praseError(parse.error),
+      error: parseError(parse.error),
     };
   }
 

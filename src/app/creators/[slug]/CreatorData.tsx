@@ -52,10 +52,7 @@ export async function CreatorData({
   return (
     <section className="container flex flex-col items-center justify-center space-y-2">
       <h2 className="text-center font-cal text-6xl">{data?.name}</h2>
-      {/* <pre className="rounded-[var(--radius-2)] border px-2 py-3 backdrop-blur backdrop-brightness-110 backdrop-contrast-125">
-        {JSON.stringify(data, null, 2)}
-      </pre> */}
-      <CreateCreatorCode creatorId={id}>
+      <CreateCreatorCode>
         <CreateForm creatorId={id} searchParams={searchParams} />
       </CreateCreatorCode>
       <ul className="space-y-6">

@@ -53,6 +53,11 @@
   body {
     @apply bg-background;
   }
+
+  input::-webkit-calendar-picker-indicator {
+    margin-bottom: 1rem;
+    margin-right: -0.5rem;
+  }
 }
 
 @media (--highContrast) {

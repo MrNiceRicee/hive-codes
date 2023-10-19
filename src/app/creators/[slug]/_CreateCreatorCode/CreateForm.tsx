@@ -6,6 +6,9 @@ import {
 } from "~/components/forms-v1/Form";
 import { CompanySearchInput } from "./CompanySearchInput";
 import { CompanySearchOptions } from "./CompanySearchOptions";
+import { SearchParamsInput } from "../../../../components/SearchParamsInput";
+import { Suspense } from "react";
+import { Loader } from "lucide-react";
 
 export function CreateForm({
   creatorId,
@@ -16,28 +19,32 @@ export function CreateForm({
 }) {
   return (
     <>
-      <FormField >
+      <FormField>
+        <label htmlFor="companyId">
+          <span className="font-cal text-sm tracking-wide">company name</span>
+        </label>
         <search className="group mb-4 flex items-center space-x-2 rounded-lg border border-gray-200 px-2 outline-[var(--brand)] backdrop-blur transition-all duration-300 [box-shadow:var(--inner-shadow-3)] focus-within:outline-dashed focus-within:outline-4 focus-within:outline-offset-4 dark:border-gray-900">
           <CompanySearchInput />
-          <CompanySearchOptions
-            listName="company-search-list"
-            searchParams={searchParams}
-          />
+          <Suspense
+            fallback={<Loader className="animate-spin" />}
+            key={searchParams.company}
+          >
+            <CompanySearchOptions
+              listName="company-search-list"
+              searchParams={searchParams}
+            />
+          </Suspense>
         </search>
         <FormDescription>the company offering the deal</FormDescription>
       </FormField>
       <FormField>
         <FormLabel htmlFor="code">code</FormLabel>
-        <Input name="code" id="code" placeholder="code..." />
+        <SearchParamsInput name="code" placeholder="code..." />
         <FormDescription>the code used for the deal</FormDescription>
       </FormField>
       <FormField>
         <FormLabel htmlFor="description">description</FormLabel>
-        <Input
-          name="description"
-          id="description"
-          placeholder="description..."
-        />
+        <SearchParamsInput name="description" placeholder="description..." />
         <FormDescription>a description of the deal or code</FormDescription>
       </FormField>
       <FormField className="hidden" aria-hidden>

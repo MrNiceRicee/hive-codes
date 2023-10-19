@@ -9,10 +9,9 @@ export function CompanySearchInput() {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [_, startTransition] = useTransition();
   const [query, setQuery] = useState(searchParams.get("company"));
 
-  // onChange for Input
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     const newParams = new URLSearchParams(searchParams);
@@ -32,17 +31,10 @@ export function CompanySearchInput() {
 
   return (
     <>
-      <label htmlFor="companyId">
-        <span className="sr-only">Search Companies</span>
-        {isPending ? (
-          <Loader className="animate-spin text-[var(--gray-6)]" />
-        ) : (
-          <Search className="text-[var(--gray-6)]" />
-        )}
-      </label>
+      <Search className="text-[var(--gray-6)]" />
       <Input
-        name="companyId"
-        id="companyId"
+        name="companyName"
+        id="companyName"
         placeholder="company..."
         list="company-search-list"
         value={query || ""}
