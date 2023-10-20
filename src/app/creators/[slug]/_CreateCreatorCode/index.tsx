@@ -1,6 +1,6 @@
 "use client";
-
-import { useFormState } from "react-dom";
+  // @ts-ignore -- experimental
+import { experimental_useFormState as useFormState } from "react-dom";
 import { useRef } from "react";
 
 import { createCode } from "./createCode";

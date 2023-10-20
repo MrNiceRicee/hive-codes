@@ -1,6 +1,11 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import {
+  // @ts-ignore -- experimental
+  experimental_useFormState as useFormState,
+  // @ts-ignore -- experimental
+  experimental_useFormStatus as useFormStatus,
+} from "react-dom";
 import { Loader } from "lucide-react";
 
 import { createCompany } from "./createCompany";
@@ -8,7 +13,7 @@ import { Input } from "~/components/Input";
 
 function LoadingIndicator() {
   return (
-    <div className="flex animate-pulse items-center justify-center space-x-2">
+    <div className="flex items-center justify-center space-x-2 animate-pulse">
       <Loader className="h-5 w-5 animate-spin" />
       <span className="inline-block">adding...</span>
     </div>
