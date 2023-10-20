@@ -1,6 +1,11 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import {
+  // @ts-ignore -- experimental
+  experimental_useFormState as useFormState,
+  // @ts-ignore -- experimental
+  experimental_useFormStatus as useFormStatus,
+} from "react-dom";
 
 import { create } from "./create";
 import { Input } from "~/components/Input";

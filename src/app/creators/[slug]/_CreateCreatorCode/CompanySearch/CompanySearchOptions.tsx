@@ -1,5 +1,4 @@
-import type { SearchCompanies } from "./searchCompanies";
-import { searchCompanies } from "./searchCompanies";
+import { searchCompanies } from "../searchCompanies";
 
 export async function CompanySearchOptions({
   searchParams,

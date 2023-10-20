@@ -7,19 +7,27 @@ async function search(query?: string) {
   }
 
   const res = db.query.company.findMany({
-    where(company, { ilike }) {
-      return ilike(company.name, `%${query}%`);
+    where(company, { ilike, sql, or }) {
+      // return ilike(company.name, `%${query}%`);
+      const search = `${query}:*`;
+      return or(
+        ilike(company.name, `%${query}%`),
+        sql`levenshtein(${company.name}, ${query}, 2, 1, 1) <= 1`,
+        // sql`similarity(${company.name}, ${query}) >= 0.1`
+      );
+      // return
     },
   });
-
   return res;
 }
 
 const searchCompaniesSchema = z.object({
-  company: z.string({
-    required_error: "Query is required",
-    invalid_type_error: "Query must be a string",
-  }).optional(),
+  company: z
+    .string({
+      required_error: "Query is required",
+      invalid_type_error: "Query must be a string",
+    })
+    .optional(),
 });
 
 export async function searchCompanies(payload: { company: string }) {
@@ -33,7 +41,8 @@ export async function searchCompanies(payload: { company: string }) {
   }
 
   const data = await search(parse.data.company);
-
+  console.log(payload.company);
+  console.log(data.length, data);
   return {
     error: null,
     data,

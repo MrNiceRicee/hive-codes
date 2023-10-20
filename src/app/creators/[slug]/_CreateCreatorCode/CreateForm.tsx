@@ -4,8 +4,8 @@ import {
   FormLabel,
   FormDescription,
 } from "~/components/forms-v1/Form";
-import { CompanySearchInput } from "./CompanySearchInput";
-import { CompanySearchOptions } from "./CompanySearchOptions";
+import { CompanySearchInput } from "./CompanySearch/CompanySearchInput";
+import { CompanySearchOptions } from "./CompanySearch/CompanySearchOptions";
 import { SearchParamsInput } from "../../../../components/SearchParamsInput";
 import { Suspense } from "react";
 import { Loader } from "lucide-react";
