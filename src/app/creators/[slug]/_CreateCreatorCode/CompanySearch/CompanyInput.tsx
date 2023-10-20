@@ -27,7 +27,7 @@ export function CompanyInput() {
 
   return (
     <CommandInput
-      placeholder="company..."
+      placeholder="search companies..."
       onValueChange={onChange}
       value={query}
     />

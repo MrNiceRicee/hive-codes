@@ -7,10 +7,12 @@ import { cn } from "~/lib/utils";
 
 export function CompanyItem({
   value,
-  index,
+  clear,
+  children,
 }: {
   value: string;
-  index: number;
+  clear?: boolean;
+  children?: React.ReactNode;
 }) {
   const router = useRouter();
   const pathName = usePathname();
@@ -20,16 +22,31 @@ export function CompanyItem({
   function onSelect(value: string) {
     const params = new URLSearchParams(searchParams);
 
+    if (clear) {
+      params.delete("company");
+      params.delete("companyQuery");
+      return router.push(pathName);
+    }
+
     if (value) {
       params.set("company", value);
     } else {
       params.delete("company");
     }
 
-    params.delete("companyQuery");
+    // params.delete("companyQuery");
 
     router.push(`${pathName}?${params.toString()}`);
   }
+
+  if (children) {
+    return (
+      <CommandItem value={value} onSelect={onSelect}>
+        {children}
+      </CommandItem>
+    );
+  }
+
   return (
     <CommandItem value={value} onSelect={onSelect}>
       {match && (
