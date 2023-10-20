@@ -57,7 +57,7 @@ export async function CreatorData({
       <CreateCreatorCode>
         <CreateForm creatorId={id} searchParams={searchParams} />
       </CreateCreatorCode>
-      <ul className="mx-auto space-y-6">
+      <ul className="mx-auto space-y-6 pt-4">
         {data?.codes.length ? (
           data.codes.map((code) => {
             return (

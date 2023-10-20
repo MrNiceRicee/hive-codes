@@ -23,7 +23,7 @@ export function CreateForm({
         <label htmlFor="companyId">
           <span className="font-cal text-sm tracking-wide">company name</span>
         </label>
-        <search className="group mb-4 flex items-center space-x-2 rounded-lg border border-gray-200 px-2 outline-[var(--brand)] backdrop-blur transition-all duration-300 [box-shadow:var(--inner-shadow-3)] focus-within:outline-dashed focus-within:outline-4 focus-within:outline-offset-4 dark:border-gray-900">
+        <div className="group mb-4 flex items-center space-x-2 rounded-lg border border-gray-200 px-2 outline-[var(--brand)] backdrop-blur transition-all duration-300 [box-shadow:var(--inner-shadow-3)] focus-within:outline-dashed focus-within:outline-4 focus-within:outline-offset-4 dark:border-gray-900">
           <CompanySearchInput />
           <Suspense
             fallback={<Loader className="animate-spin" />}
@@ -34,7 +34,7 @@ export function CreateForm({
               searchParams={searchParams}
             />
           </Suspense>
-        </search>
+        </div>
         <FormDescription>the company offering the deal</FormDescription>
       </FormField>
       <FormField>

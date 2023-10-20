@@ -3,7 +3,7 @@ import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { SubmitLoadingIndicator } from "./SubmitLoadingIndicator";
 
 export function SubmitButton() {
-  let { pending } = useFormStatus();
+  const { pending } = useFormStatus();
 
   return (
     <button

@@ -1,7 +1,8 @@
 "use client";
-  // @ts-ignore -- experimental
+// @ts-ignore -- experimental
 import { experimental_useFormState as useFormState } from "react-dom";
 import { useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { createCode } from "./createCode";
 import { ErrorMessage } from "~/components/ErrorMessage";
@@ -19,6 +20,8 @@ export function CreateCreatorCode({
     FormData
   >(createCode, { error: null });
   const ref = useRef<HTMLFormElement>(null);
+  const router = useRouter();
+  const pathName = usePathname();
 
   return (
     <div className="mx-auto w-full max-w-sm space-y-4 rounded-[calc(0.5rem+0.5rem)] border p-2 backdrop-blur">
@@ -33,6 +36,7 @@ export function CreateCreatorCode({
             await formAction(formData);
             if (!state.error) {
               ref.current?.reset();
+              router.replace(`${pathName}?`);
             }
           }}
           className="space-y-2"

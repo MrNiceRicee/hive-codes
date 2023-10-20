@@ -12,7 +12,7 @@ export default function CreatorPage({
   };
 }) {
   return (
-    <main className="pt-20 h-[100dvh] w-screen overflow-hidden overflow-y-scroll before:grainy before:opacity-40">
+    <main className="py-14 h-[100dvh] w-screen overflow-hidden overflow-y-scroll before:grainy before:opacity-40">
       <CreatorData id={params.slug} searchParams={searchParams} />
     </main>
   );
