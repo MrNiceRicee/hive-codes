@@ -30,6 +30,7 @@ export function CompanyInput() {
       placeholder="search companies..."
       onValueChange={onChange}
       value={query}
+      name="companyQuery"
     />
   );
 }

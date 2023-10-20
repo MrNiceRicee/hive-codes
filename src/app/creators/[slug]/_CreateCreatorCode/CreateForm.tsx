@@ -20,6 +20,13 @@ export function CreateForm({
         <label htmlFor="companyId">
           <span className="font-cal text-sm tracking-wide">company name</span>
         </label>
+        <input
+          className="hidden"
+          type="hidden"
+          defaultValue={searchParams.company}
+          name="companyName"
+          id="companyName"
+        />
         <CompanySearchInputV2 searchParams={searchParams} />
         <FormDescription>the company offering the deal</FormDescription>
       </FormField>
@@ -34,11 +41,12 @@ export function CreateForm({
         <FormDescription>a description of the deal or code</FormDescription>
       </FormField>
       <FormField className="hidden" aria-hidden>
-        <Input
+        <input
           name="creatorId"
           id="creatorId"
           placeholder="creator..."
           defaultValue={creatorId}
+          type="hidden"
         />
       </FormField>
     </>
