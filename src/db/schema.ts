@@ -2,11 +2,10 @@ import { relations, sql } from "drizzle-orm";
 import {
   serial,
   varchar,
-  // pgTable,
   timestamp,
   integer,
-  index,
   uniqueIndex,
+  index,
   pgTableCreator,
 } from "drizzle-orm/pg-core";
 
@@ -83,6 +82,7 @@ export const code = pgTable(
         codes.companyId,
         codes.creatorId,
       ),
+      codes_code: index("codes_code").on(codes.code),
     };
   },
 );
