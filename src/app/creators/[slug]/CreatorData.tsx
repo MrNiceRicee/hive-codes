@@ -47,7 +47,7 @@ export async function CreatorData({
   searchParams,
 }: {
   id: string;
-  searchParams: { company: string };
+  searchParams: { company: string; companyQuery: string };
 }) {
   const data = await CreatorFetch(id);
 

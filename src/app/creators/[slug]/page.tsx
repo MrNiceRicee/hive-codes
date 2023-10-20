@@ -9,10 +9,11 @@ export default function CreatorPage({
   };
   searchParams: {
     company: string;
+    companyQuery: string;
   };
 }) {
   return (
-    <main className="py-14 h-[100dvh] w-screen overflow-hidden overflow-y-scroll before:grainy before:opacity-40">
+    <main className="h-[100dvh] w-screen overflow-hidden overflow-y-scroll py-14 before:grainy before:opacity-40">
       <CreatorData id={params.slug} searchParams={searchParams} />
     </main>
   );

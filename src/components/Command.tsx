@@ -3,7 +3,7 @@
 import * as React from "react";
 import { DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
-import { Search } from "lucide-react";
+import { Loader, Search } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 import { Dialog, DialogContent } from "~/components/Dialog";
@@ -15,7 +15,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "bg-[var(--surface-2)] text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+      "text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md bg-[var(--surface-2)]",
       className,
     )}
     {...props}
@@ -46,7 +46,7 @@ const CommandInput = React.forwardRef<
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        "placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        "placeholder:[var(--text-primary-contrast)] flex h-11 w-full rounded-md bg-transparent py-3 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
@@ -117,7 +117,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "aria-selected:bg-accent aria-selected:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 outline-none aria-selected:bg-background-contrast aria-selected:text-background data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
     {...props}
@@ -142,6 +142,25 @@ const CommandShortcut = ({
 };
 CommandShortcut.displayName = "CommandShortcut";
 
+const CommandLoading = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Loading>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Loading>
+>(({ children, ...props }, ref) => (
+  <CommandPrimitive.Loading ref={ref} {...props}>
+    {children ? (
+      children
+    ) : (
+      <div className="p-2 animate-in slide-in-from-left-2">
+        <div className="flex animate-pulse space-x-2">
+          <Loader className="animate-spin" />
+          <span>Loading...</span>
+        </div>
+      </div>
+    )}
+  </CommandPrimitive.Loading>
+));
+CommandLoading.displayName = "CommandLoading";
+
 export {
   Command,
   CommandDialog,
@@ -152,4 +171,5 @@ export {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
+  CommandLoading,
 };
