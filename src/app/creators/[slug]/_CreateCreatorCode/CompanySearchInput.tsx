@@ -1,16 +1,15 @@
 "use client";
 
-import { Loader, Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Input } from "~/components/Input";
-import { cn } from "~/lib/utils";
 
 export function CompanySearchInput() {
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [_isPending, startTransition] = useTransition();
   const [query, setQuery] = useState(searchParams.get("company") || "");
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -24,17 +23,6 @@ export function CompanySearchInput() {
       newParams.delete("company");
       setQuery("");
     }
-
-    startTransition(() => {
-      router.push(`${pathName}?${newParams.toString()}`);
-    });
-  }
-
-  function onClear() {
-    const newParams = new URLSearchParams(searchParams);
-
-    newParams.delete("company");
-    setQuery("");
 
     startTransition(() => {
       router.push(`${pathName}?${newParams.toString()}`);
