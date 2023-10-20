@@ -8,7 +8,6 @@ async function CompanyFetch(id: string) {
       return eq(company.id, id);
     },
     with: {
-      // codes: true,
       codes: {
         columns: {
           id: true,

@@ -34,8 +34,6 @@ export function CompanyItem({
       params.delete("company");
     }
 
-    // params.delete("companyQuery");
-
     router.push(`${pathName}?${params.toString()}`);
   }
 

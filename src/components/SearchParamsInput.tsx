@@ -36,7 +36,6 @@ export function SearchParamsInput({
       id={name}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      // value={value}
       onChange={onChange}
     />
   );
