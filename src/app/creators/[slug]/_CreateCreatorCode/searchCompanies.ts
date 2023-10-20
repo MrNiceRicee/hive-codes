@@ -8,7 +8,6 @@ async function search(query?: string) {
 
   const res = db.query.company.findMany({
     where(company, { ilike, sql, or }) {
-      // return ilike(company.name, `%${query}%`);
       const search = `${query.trim()}:*`;
       return or(
         ilike(company.name, `%${query}%`),
@@ -42,8 +41,6 @@ export async function searchCompanies(payload: { companyQuery: string }) {
   }
 
   const data = await search(parse.data.companyQuery);
-  console.log(payload.companyQuery);
-  console.log(data.length, data);
 
   return {
     error: null,
