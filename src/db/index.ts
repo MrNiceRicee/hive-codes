@@ -9,9 +9,6 @@ import * as schema from "./schema";
 
 neonConfig.fetchConnectionCache = true;
 
-// const client = neon(env.DATABASE_URL);
-// export const db = drizzle(client, { schema });
-
 const config = () => {
   if (env.NODE_ENV !== "production") {
     const client = postgres(env.DATABASE_URL);
