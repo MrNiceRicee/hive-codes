@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Check, Trash2 } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { CommandItem } from "~/components/Command";
 import { cn } from "~/lib/utils";
@@ -43,6 +43,15 @@ export function CompanyItem({
     return (
       <CommandItem value={value} onSelect={onSelect}>
         {children}
+      </CommandItem>
+    );
+  }
+
+  if (clear) {
+    return (
+      <CommandItem value={value} onSelect={onSelect} className="group">
+        <Trash2 className="mr-2 h-4 w-4 duration-300 ease-spring-3 animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
+        <span>clear</span>
       </CommandItem>
     );
   }

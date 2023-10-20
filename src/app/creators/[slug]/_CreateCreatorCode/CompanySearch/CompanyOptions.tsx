@@ -25,12 +25,7 @@ async function Options({
 
   return (
     <CommandGroup>
-      {Boolean(searchParams.company) && (
-        <CompanyItem value="clear" clear>
-          <Trash2 className="mr-2 h-4 w-4 duration-300 ease-spring-3 animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
-          <span>clear</span>
-        </CompanyItem>
-      )}
+      {Boolean(searchParams.company) && <CompanyItem value="clear" clear />}
       {data.map((company, index) => {
         return <CompanyItem value={company.name} key={company.id} />;
       })}
