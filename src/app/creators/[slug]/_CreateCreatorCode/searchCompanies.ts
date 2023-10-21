@@ -1,3 +1,4 @@
+import { asc } from "drizzle-orm";
 import z from "zod";
 import { db } from "~/db";
 
@@ -8,7 +9,7 @@ async function search(query?: string) {
 
   const res = db.query.company.findMany({
     where(company, { ilike, sql, or }) {
-      const search = `${query.trim()}:*`;
+      // const search = `${query.trim()}:*`;
       return or(
         ilike(company.name, `%${query}%`),
         // sql`levenshtein(${company.name}, ${query}, 2, 1, 1) <= 1`,
@@ -17,7 +18,14 @@ async function search(query?: string) {
       );
     },
     orderBy(company, { desc, sql }) {
-      return desc(sql`similarity(${company.name}, ${query})`);
+      const formattedQuery = query.split(" ").join(" & ");
+      // return desc(sql`similarity(${company.name}, ${query})`);
+      return [
+        desc(sql`CASE WHEN ${company.name} = ${query} THEN 1 ELSE 0 END`),
+        // desc(sql`CASE WHEN ${company.name} ILIKE ${query} || '%' THEN 1 ELSE 0 END`),
+        // desc(sql`CASE WHEN ${company.name} ILIKE '%' || ${query} THEN 1 ELSE 0 END`),
+        desc(sql`similarity(${company.name}, ${query})`),
+      ];
     },
   });
   return res;

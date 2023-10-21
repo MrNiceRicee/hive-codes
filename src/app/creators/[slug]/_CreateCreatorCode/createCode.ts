@@ -13,11 +13,14 @@ const createCodeSchema = z.object({
       invalid_type_error: "Code must be a string",
     })
     .min(1, {
-      message: "Code must be at least 1 character",
+      message: "Remember to add the code!",
     }),
   companyId: z.coerce
     .string({
       required_error: "Company ID is required",
+    })
+    .min(1, {
+      message: "Oops, need a company!",
     })
     .transform(async (companyName, ctx) => {
       const company = await db.query.company.findFirst({
@@ -50,7 +53,7 @@ function parseError<T extends z.AnyZodObject>(error: z.ZodError<T["shape"]>) {
   const fields = stripUndef(error.flatten().fieldErrors);
   const keys = Object.keys(fields) as (keyof typeof fields)[];
 
-  return keys.map((key) => (fields[key] as string[]).join(", ")).join(", ");
+  return keys.map((key) => (fields[key] as string[]).join("; ")).join(" - ");
 }
 
 export async function createCode(_state: any, payload: FormData) {
