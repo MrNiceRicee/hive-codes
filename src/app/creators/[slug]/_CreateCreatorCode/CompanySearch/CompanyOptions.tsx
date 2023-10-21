@@ -6,7 +6,7 @@ import {
 import { searchCompanies } from "../searchCompanies";
 import { CompanyItem } from "./CompanyItem";
 import { Suspense } from "react";
-import { Microscope } from "~/components/icons/microscope";
+import { Microscope } from "~/components/icons/Microscope";
 
 async function Options({
   searchParams,
@@ -17,10 +17,12 @@ async function Options({
 
   if (!data.length) {
     return (
-      <section className="grid grid-cols-6 grid-rows-1 items-center px-1 py-3 text-sm animate-in fade-in-0 slide-in-from-left-6">
+      <section className="grid grid-cols-6 grid-rows-1 items-center px-1 py-3 text-sm motion-safe:animate-in fade-in-0 slide-in-from-left-6">
         {/* <span className="text-9xl block mx-auto">😥</span> */}
-        <div className="col-span-1 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-background">
-          <Microscope className="h-6 w-6" />
+        <div className="col-span-1 mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-background">
+          <div className="duration-700 ease-spring-3 motion-safe:animate-in fade-in-0 spin-in-[-45deg] slide-in-from-right-6">
+            <Microscope className="block h-6 w-6" />
+          </div>
         </div>
         <div className="col-span-5 ml-2 [text-wrap:balance]">
           <h3 className="font-cal text-lg">no results found</h3>
