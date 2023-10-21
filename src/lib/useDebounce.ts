@@ -37,30 +37,30 @@ function debounce<F extends (...args: any[]) => any>(
 
 type Fn = (...args: any[]) => any;
 
-export function useDebouncedFunction<F extends Fn>(
-  func: F,
-  delay = 500,
-): (...args: Parameters<F>) => void {
-  // Store the debounced function in a ref to persist it across renders
-  const debouncedFuncRef = useRef(debounce(func, delay));
+// export function useDebouncedFunction<F extends Fn>(
+//   func: F,
+//   delay = 500,
+// ): (...args: Parameters<F>) => void {
+//   // Store the debounced function in a ref to persist it across renders
+//   const debouncedFuncRef = useRef(debounce(func, delay));
 
-  // Update the debounced function if `func` or `wait` changes
-  useEffect(() => {
-    debouncedFuncRef.current = debounce(func, delay);
-  }, [func, delay]);
+//   // Update the debounced function if `func` or `wait` changes
+//   useEffect(() => {
+//     debouncedFuncRef.current = debounce(func, delay);
+//   }, [func, delay]);
 
-  // Clean up on component unmount
-  useEffect(() => {
-    return () => {
-      // If there's a pending debounced call, clear it
-      clearTimeout(debouncedFuncRef.current as any);
-    };
-  }, []);
+//   // Clean up on component unmount
+//   useEffect(() => {
+//     return () => {
+//       // If there's a pending debounced call, clear it
+//       clearTimeout(debouncedFuncRef.current as any);
+//     };
+//   }, []);
 
-  return useCallback((...args: Parameters<F>) => {
-    debouncedFuncRef.current(...args);
-  }, []);
-}
+//   return useCallback((...args: Parameters<F>) => {
+//     debouncedFuncRef.current(...args);
+//   }, []);
+// }
 
 export function useDebounceFn<T extends (...args: any[]) => any>(
   fn: T,
