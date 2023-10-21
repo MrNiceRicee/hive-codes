@@ -12,10 +12,12 @@ async function search(query?: string) {
       return or(
         ilike(company.name, `%${query}%`),
         // sql`levenshtein(${company.name}, ${query}, 2, 1, 1) <= 1`,
-        sql`similarity(${company.name}, ${query}) >= 0.25`,
+        sql`similarity(${company.name}, ${query}) >= 0.3`,
         // sql`to_tsvector(${company.name}) @@ to_tsquery(${search})`,
       );
-      // return
+    },
+    orderBy(company, { desc, sql }) {
+      return desc(sql`similarity(${company.name}, ${query})`);
     },
   });
   return res;
