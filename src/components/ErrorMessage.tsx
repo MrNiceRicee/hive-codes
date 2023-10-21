@@ -12,7 +12,7 @@ export function ErrorMessage({
   return (
     <p
       className={cn(
-        "ease-[var(--ease-elastic-in-3)] break-before-all text-red-500 motion-safe:animate-in fade-in slide-in-from-bottom-2",
+        "ease-[var(--ease-elastic-in-3)] break-before-all text-red-500 animate-in fade-in slide-in-from-bottom-2",
         className,
       )}
     >

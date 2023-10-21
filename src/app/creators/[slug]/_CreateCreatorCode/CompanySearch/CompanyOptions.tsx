@@ -17,10 +17,10 @@ async function Options({
 
   if (!data.length) {
     return (
-      <section className="grid grid-cols-6 grid-rows-1 items-center px-1 py-3 text-sm motion-safe:animate-in fade-in-0 slide-in-from-left-6">
+      <section className="grid grid-cols-6 grid-rows-1 items-center px-1 py-3 text-sm animate-in fade-in-0 slide-in-from-left-6">
         {/* <span className="text-9xl block mx-auto">😥</span> */}
         <div className="col-span-1 mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-background">
-          <div className="duration-700 ease-spring-3 motion-safe:animate-in fade-in-0 spin-in-[-45deg] slide-in-from-right-6">
+          <div className="duration-700 ease-spring-3 animate-in fade-in-0 spin-in-[-45deg] slide-in-from-right-6">
             <Microscope className="block h-6 w-6" />
           </div>
         </div>

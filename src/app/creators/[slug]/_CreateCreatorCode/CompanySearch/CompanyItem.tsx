@@ -49,7 +49,7 @@ export function CompanyItem({
   if (clear) {
     return (
       <CommandItem value={value} onSelect={onSelect} className="group">
-        <Trash2 className="mr-2 h-4 w-4 duration-300 ease-spring-3 motion-safe:animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
+        <Trash2 className="mr-2 h-4 w-4 duration-300 ease-spring-3 animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
         <span>clear</span>
       </CommandItem>
     );
@@ -58,7 +58,7 @@ export function CompanyItem({
   return (
     <CommandItem value={value} onSelect={onSelect}>
       {match && (
-        <Check className="mr-2 h-4 w-4 text-[var(--green-6)] duration-300 ease-spring-3 motion-safe:animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
+        <Check className="mr-2 h-4 w-4 text-[var(--green-6)] duration-300 ease-spring-3 animate-in zoom-in-0 spin-in-[-45deg] slide-in-from-left-2" />
       )}
       <span className={cn(match ? "font-cal tracking-wide " : "ml-6")}>
         {/* {value} */}
