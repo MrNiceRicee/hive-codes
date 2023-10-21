@@ -74,7 +74,7 @@ async function CreatorCodes({ id }: { id: string }) {
   );
 }
 
-export async function CreatorData({
+export function CreatorData({
   id,
   searchParams,
 }: {
