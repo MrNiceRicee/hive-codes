@@ -40,7 +40,7 @@
     "autoprefixer": "^10",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.13",
-    "eslint": "^8",
+    "eslint": "^8.52.0",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
     "prettier": "^3.0.3",
