@@ -3,10 +3,8 @@
 import { Check, Trash2 } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { CommandItem } from "~/components/Command";
-import { HighlightText } from "~/components/Hightlight";
+import { HighlightTextTrie } from "~/components/Hightlight";
 import { cn } from "~/lib/utils";
-
-
 
 export function CompanyItem({
   value,
@@ -64,7 +62,7 @@ export function CompanyItem({
       )}
       <span className={cn(match ? "font-cal tracking-wide " : "ml-6")}>
         {/* {value} */}
-        <HighlightText
+        <HighlightTextTrie
           text={value}
           query={searchParams.get("companyQuery") || ""}
         />
