@@ -6,7 +6,6 @@ import {
 import { searchCompanies } from "../searchCompanies";
 import { CompanyItem } from "./CompanyItem";
 import { Suspense } from "react";
-import { Trash2 } from "lucide-react";
 
 async function Options({
   searchParams,
@@ -40,7 +39,7 @@ export function CompanyOptions({
 }) {
   return (
     <CommandList>
-      <Suspense fallback={<CommandLoading />} key={searchParams.companyQuery}>
+      <Suspense fallback={<CommandLoading />}>
         <Options searchParams={searchParams} />
       </Suspense>
     </CommandList>
