@@ -3,6 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
 import { CommandInput } from "~/components/Command";
+import { useDebounceFn } from "~/lib/useDebounce";
+import { useThrottle } from "~/lib/useThrottle";
 
 export function CompanyInput() {
   const router = useRouter();
@@ -11,18 +13,28 @@ export function CompanyInput() {
   const [query, setQuery] = useState(searchParams.get("companyQuery") || "");
   const [_isPending, startTransition] = useTransition();
 
-  function onChange(e: string) {
-    const params = new URLSearchParams(searchParams);
-    setQuery(e);
+  const debouncedParams = useDebounceFn(
+    (e: string) => {
+      const params = new URLSearchParams(searchParams);
+      if (e) {
+        params.set("companyQuery", e);
+      } else {
+        params.delete("companyQuery");
+      }
+      startTransition(() => {
+        router.push(`${pathName}?${params.toString()}`);
+      });
+    },
+    500,
+    {
+      leading: true,
+      trailing: true,
+    },
+  );
 
-    if (e) {
-      params.set("companyQuery", e);
-    } else {
-      params.delete("companyQuery");
-    }
-    startTransition(() => {
-      router.push(`${pathName}?${params.toString()}`);
-    });
+  function onChange(e: string) {
+    setQuery(e);
+    debouncedParams(e);
   }
 
   return (
