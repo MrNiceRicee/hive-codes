@@ -1,13 +1,12 @@
 import { db } from "~/db";
+import { CreateCreatorCode } from "./_CreateCreatorCode";
+import { CreateForm } from "./_CreateCreatorCode/CreateForm";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
     where(creator, { eq }) {
       // @ts-ignore -- this works, but drizzle doesn't like it
       return eq(creator.id, id);
-    },
-    with: {
-      codes: true,
     },
     columns: {
       name: true,
@@ -19,15 +18,76 @@ async function CreatorFetch(id: string) {
   return creator;
 }
 
-export async function CreatorData({ id }: { id: string }) {
-  const data = await CreatorFetch(id);
+async function CreatorCodesFetch(id: string) {
+  const codes = await db.query.code.findMany({
+    where(code, { eq }) {
+      // @ts-ignore -- this works, but drizzle doesn't like it
+      return eq(code.creatorId, id);
+    },
+    with: {
+      company: {
+        columns: {
+          id: true,
+          name: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      },
+    },
+  });
+
+  return codes;
+}
+
+async function CreatorName({ id }: { id: string }) {
+  const creator = await CreatorFetch(id);
+
+  return <h2 className="text-center font-cal text-6xl">{creator?.name}</h2>;
+}
+
+async function CreatorCodes({ id }: { id: string }) {
+  const codes = await CreatorCodesFetch(id);
 
   return (
-    <section className="container flex flex-col items-center justify-center space-y-2">
-      <h2 className="text-center font-cal text-6xl">{data?.name}</h2>
-      <pre className="rounded-[var(--radius-2)] border px-2 py-3 backdrop-blur backdrop-brightness-110 backdrop-contrast-125">
-        {JSON.stringify(data, null, 2)}
-      </pre>
+    <ul className="mx-auto space-y-6 pt-4">
+      {codes.length ? (
+        codes.map((code) => {
+          return (
+            <li key={code.id}>
+              <h3 className="font-cal text-2xl">
+                <pre className="inline rounded-lg border bg-[var(--surface-2)] px-2 py-1">
+                  {code.code}
+                </pre>
+                {" - "}
+                {code.company.name}
+              </h3>
+              <p>{code.description}</p>
+            </li>
+          );
+        })
+      ) : (
+        <li>
+          <h3>No codes found</h3>
+        </li>
+      )}
+    </ul>
+  );
+}
+
+export function CreatorData({
+  id,
+  searchParams,
+}: {
+  id: string;
+  searchParams: { company: string; companyQuery: string };
+}) {
+  return (
+    <section className="container mx-auto flex flex-col items-center justify-center space-y-2">
+      <CreatorName id={id} />
+      <CreateCreatorCode>
+        <CreateForm creatorId={id} searchParams={searchParams} />
+      </CreateCreatorCode>
+      <CreatorCodes id={id} />
     </section>
   );
 }

@@ -2,10 +2,10 @@ import { relations } from "drizzle-orm";
 import {
   serial,
   varchar,
-  // pgTable,
   timestamp,
   integer,
   uniqueIndex,
+  index,
   pgTableCreator,
 } from "drizzle-orm/pg-core";
 
@@ -20,7 +20,7 @@ const pgTable = pgTableCreator((name) => `hive_codes_${name}`);
 */
 export const company = pgTable("companies", {
   id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }),
+  name: varchar("name", { length: 256 }).notNull().unique(),
 
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
@@ -82,6 +82,7 @@ export const code = pgTable(
         codes.companyId,
         codes.creatorId,
       ),
+      codes_code: index("codes_code").on(codes.code),
     };
   },
 );

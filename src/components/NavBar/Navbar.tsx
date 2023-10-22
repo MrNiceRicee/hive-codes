@@ -1,6 +1,5 @@
 import Link, { type LinkProps } from "next/link";
 import { cn } from "~/lib/utils";
-// import { NavBack } from "./NavBack";
 
 type NavLinkProps = LinkProps & {
   className?: string;
@@ -32,6 +31,7 @@ export function Navbar() {
         <div className="flex items-center space-x-4">
           <NavLink href="/search">Search</NavLink>
           <NavLink href="/creators">Creators</NavLink>
+          <NavLink href="/companies">Companies</NavLink>
         </div>
       </div>
     </nav>

@@ -1,8 +1,9 @@
 import { Suspense } from "react";
 import { AddForm } from "./AddForm";
-import { CreatorList, CreatorListLoading } from "./CreatorList";
+import { CreatorList } from "./CreatorList";
 import { Metadata } from "next";
 import { CreatorSearch } from "./CreatorSearch";
+import { LoaderList } from "~/components/loaders/LoaderList";
 
 export const metadata: Metadata = {
   title: "Creators",
@@ -17,7 +18,7 @@ export default async function Creator({
   };
 }) {
   return (
-    <main className="mt-10 flex h-[100dvh] w-screen justify-center overflow-hidden py-8 before:grainy before:opacity-40">
+    <main className="flex h-[100dvh] w-screen justify-center overflow-hidden py-8 pt-10 before:grainy before:opacity-40">
       <div className="container flex flex-col space-y-4">
         <AddForm />
         <section className="dotted-graph h-full space-y-2">
@@ -25,10 +26,12 @@ export default async function Creator({
             creators
           </h2>
           <div className="mx-auto max-w-sm">
-            <CreatorSearch />
-            <Suspense fallback={<CreatorListLoading />}>
-              <CreatorList search={searchParams.search} />
-            </Suspense>
+            <search>
+              <CreatorSearch />
+              <Suspense fallback={<LoaderList />}>
+                <CreatorList search={searchParams.search} />
+              </Suspense>
+            </search>
           </div>
         </section>
       </div>

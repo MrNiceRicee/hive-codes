@@ -6,12 +6,22 @@ import {
   // @ts-ignore -- experimental
   experimental_useFormStatus as useFormStatus,
 } from "react-dom";
+import { Loader } from "lucide-react";
 
-import { create } from "./create";
+import { createCompany } from "./createCompany";
 import { Input } from "~/components/Input";
 
+function LoadingIndicator() {
+  return (
+    <div className="flex items-center justify-center space-x-2 animate-pulse">
+      <Loader className="h-5 w-5 animate-spin" />
+      <span className="inline-block">adding...</span>
+    </div>
+  );
+}
+
 function SubmitButton() {
-  const { pending } = useFormStatus();
+  let { pending } = useFormStatus();
 
   return (
     <button
@@ -20,15 +30,10 @@ function SubmitButton() {
       disabled={pending}
       className="mt-4 w-full rounded-lg border py-2 font-cal backdrop-blur backdrop-brightness-125"
     >
-      {pending ? "adding..." : "add"}
+      {pending ? <LoadingIndicator /> : "add"}
     </button>
   );
 }
-
-const initialState = {
-  data: "",
-  error: "",
-};
 
 function ErrorMessage({ error }: { error: string | null }) {
   if (!error) return null;
@@ -36,21 +41,24 @@ function ErrorMessage({ error }: { error: string | null }) {
   return <div className="text-red-500">{error}</div>;
 }
 
-export function AddForm() {
+const initialState = {
+  error: null,
+};
+
+export function AddCreatorForm() {
   const [state, formAction] = useFormState<
     {
-      data: any;
       error: string | null;
     },
     FormData
-  >(create, initialState);
+  >(createCompany, initialState);
 
   return (
     <section className="mx-auto max-w-sm rounded-[calc(0.5rem+0.25rem)] border p-1 backdrop-blur">
       <form action={formAction}>
         <fieldset className="flex flex-col space-y-1">
           <label htmlFor="name">name</label>
-          <Input name="name" id="name" placeholder="someone" />
+          <Input name="name" id="name" placeholder="company name..." />
         </fieldset>
         <SubmitButton />
         <ErrorMessage error={state.error} />

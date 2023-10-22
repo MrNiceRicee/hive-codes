@@ -14,13 +14,13 @@
   --link: var(--indigo-6);
 
   --background: var(--surface-1);
-  --background-contrast: var(--text-1);
+  --background-contrast: var(--stone-9);
 
   --background-gradient-1: var(--gradient-3);
   --border: var(--stone-6);
 
   --text-primary: var(--text-1);
-  --text-primary-contrast: var(--surface-2);
+  --text-primary-contrast: var(--gray-6);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,7 +37,7 @@
     --border: var(--stone-5);
 
     --text-primary: var(--text-1);
-    --text-primary-contrast: var(--surface-2);
+    /* --text-primary-contrast: var(--text-2); */
   }
 }
 
@@ -52,6 +52,11 @@
 
   body {
     @apply bg-background;
+  }
+
+  input::-webkit-calendar-picker-indicator {
+    margin-bottom: 1rem;
+    margin-right: -0.5rem;
   }
 }
 
