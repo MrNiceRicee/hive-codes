@@ -4,7 +4,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
 import { CommandInput } from "~/components/Command";
 import { useDebounceFn } from "~/lib/useDebounce";
-import { useThrottle } from "~/lib/useThrottle";
 
 export function CompanyInput() {
   const router = useRouter();
