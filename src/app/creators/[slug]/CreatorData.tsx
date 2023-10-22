@@ -1,6 +1,9 @@
 import { db } from "~/db";
 import { CreateCreatorCode } from "./_CreateCreatorCode";
 import { CreateForm } from "./_CreateCreatorCode/CreateForm";
+import { Suspense } from "react";
+import { LoaderBar } from "~/components/loaders/LoaderBar";
+import { LoaderList } from "~/components/loaders/LoaderList";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
@@ -83,11 +86,17 @@ export function CreatorData({
 }) {
   return (
     <section className="container mx-auto flex flex-col items-center justify-center space-y-2">
-      <CreatorName id={id} />
+      <Suspense fallback={<LoaderBar />}>
+        <CreatorName id={id} />
+      </Suspense>
       <CreateCreatorCode>
         <CreateForm creatorId={id} searchParams={searchParams} />
       </CreateCreatorCode>
-      <CreatorCodes id={id} />
+      <Suspense
+        fallback={<LoaderList list={{ className: "w-full mx-auto" }} />}
+      >
+        <CreatorCodes id={id} />
+      </Suspense>
     </section>
   );
 }

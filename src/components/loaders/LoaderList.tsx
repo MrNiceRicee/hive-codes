@@ -1,9 +1,13 @@
 export function LoaderList({
   length = 4,
   children,
+  list,
 }: {
   length?: number;
   children?: React.ReactNode;
+  list?: {
+    className?: string;
+  };
 }) {
   return (
     <ul className="animate-pulse space-y-6">
