@@ -18,10 +18,12 @@ const config: Config = {
     extend: {
       colors: {
         background: "var(--background)",
+        "background-shade": "var(--background-shade)",
         "background-contrast": "var(--background-contrast)",
         border: "var(--border)",
         "text-primary": "var(--text-primary)",
         "text-primary-contrast": "var(--text-primary-contrast)",
+        "shade": "var(--text-shade)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -167,6 +169,14 @@ const config: Config = {
           filter: "var(--noise-filter-3)",
           inset: "0",
           mixBlendMode: "overlay",
+          pointerEvents: "none",
+        },
+        ".grainy-2": {
+          position: "absolute",
+          backgroundImage: "var(--noise-4)",
+          // filter: "var(--noise-filter-5)",
+          inset: "0",
+          mixBlendMode: "color-dodge",
           pointerEvents: "none",
         },
         ".grainy-text": {

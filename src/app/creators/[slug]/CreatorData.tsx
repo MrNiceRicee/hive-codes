@@ -4,6 +4,7 @@ import { CreateForm } from "./_CreateCreatorCode/CreateForm";
 import { Suspense } from "react";
 import { LoaderBar } from "~/components/loaders/LoaderBar";
 import { LoaderList } from "~/components/loaders/LoaderList";
+import { CouponCard } from "~/components/CouponCard";
 
 async function CreatorFetch(id: string) {
   const creator = await db.query.creator.findFirst({
@@ -56,16 +57,22 @@ async function CreatorCodes({ id }: { id: string }) {
       {codes.length ? (
         codes.map((code) => {
           return (
-            <li key={code.id}>
-              <h3 className="font-cal text-2xl">
-                <pre className="inline rounded-lg border bg-[var(--surface-2)] px-2 py-1">
-                  {code.code}
-                </pre>
-                {" - "}
-                {code.company.name}
-              </h3>
-              <p>{code.description}</p>
-            </li>
+            // <li key={code.id}>
+            //   <h3 className="font-cal text-2xl">
+            //     <pre className="inline rounded-lg border bg-[var(--surface-2)] px-2 py-1">
+            //       {code.code}
+            //     </pre>
+            //     {" - "}
+            //     {code.company.name}
+            //   </h3>
+            //   <p>{code.description}</p>
+            // </li>
+            <CouponCard
+              key={code.id}
+              code={code.code!}
+              company={code.company.name}
+              description={code.description}
+            />
           );
         })
       ) : (

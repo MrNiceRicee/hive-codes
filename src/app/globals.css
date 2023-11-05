@@ -14,12 +14,14 @@
   --link: var(--indigo-6);
 
   --background: var(--surface-1);
+  --background-shade: var(--stone-2);
   --background-contrast: var(--stone-9);
 
   --background-gradient-1: var(--gradient-3);
   --border: var(--stone-6);
 
   --text-primary: var(--text-1);
+  --text-shade: var(--gray-8);
   --text-primary-contrast: var(--gray-6);
 }
 
@@ -31,12 +33,14 @@
     --link: var(--indigo-6);
 
     --background: var(--surface-1);
+    --background-shade: var(--surface-2);
     --background-contrast: var(--text-1);
 
     --background-gradient-1: var(--gradient-3);
     --border: var(--stone-5);
 
     --text-primary: var(--text-1);
+    --text-shade: var(--gray-5);
     /* --text-primary-contrast: var(--text-2); */
   }
 }
